@@ -1,11 +1,11 @@
-import './assets/main.css'
+import { createApp } from "vue";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
+app.mount("#root");
 
-const app = createApp(App)
+function handleModelChange() {
+  connectToFirebase(reactiveModel, watch);
+}
 
-app.use(router)
-
-app.mount('#app')
+// Watch for changes in reactiveModel's properties
+watch(handleModelChange);
