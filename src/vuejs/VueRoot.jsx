@@ -1,31 +1,33 @@
-import Test from "./views/test.jsx"
+import Test from "../views/test.jsx"
 //import Sidebar from "./sidebarPresenter.jsx";
+//import Search from "./searchPresenter.jsx";
+//import Details from "./detailsPresenter.jsx";
 
 import {createRouter, RouterView, createWebHashHistory} from "vue-router";
 
 export function VueRoot(props){ //makeRouter
-  //if (props.model.ready) {
+  if (1===1){  //props.model.ready // make it (1===0) to see else status
   return  ( 
-    <div> {/* this div should be like: <div class="flex_parent">*/}
+    <div class="flex_parent">
 
-      <div><Test model ={props.model}></Test></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
+      <div><Test model ={props.model}/></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
+
+      {/*<div class="main_content"> <RouterView /> </div>*/}
 
     </div>
   );
 }
-/* else {
+else {
   return (
             <div class="flex_parent">
                 <div>
                     <img src="https://brfenergi.se/iprog/loading.gif"/>
                 </div>
-                <div class="main_content">
-                    <RouterView />
-                </div>
+                {/*<div class="main_content"> <RouterView />  </div> */}
             </div>
         );
   } 
-*/
+}
 export default VueRoot;
 /*
 if (props.model.ready) {
@@ -34,9 +36,7 @@ if (props.model.ready) {
                 <div>
                     <Sidebar model={props.model} class="sidebar"/>
                 </div>
-                <div class="main_content">
-                    <RouterView />
-                </div>
+                
             </div>
         );
     }
