@@ -1,9 +1,16 @@
-/**import { createRouter, createWebHistory } from 'vue-router'
+import Test from "./views/test.jsx"
+
+export function VueRoot(props){
+  return  ( 
+    <div><Test model ={props.model}></Test></div>
+  );
+}
+/*import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+  routes: 
     {
       path: '/',
       name: 'home',
@@ -20,4 +27,4 @@ const router = createRouter({
   ]
 })
 
-export default router**/
+export default router*/
