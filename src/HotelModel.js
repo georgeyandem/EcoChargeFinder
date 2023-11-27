@@ -1,5 +1,5 @@
 import resolvePromise from "./resolvePromise";
-import searchHotelsByLocation from "./hotelSource";
+//import searchHotelsByLocation from "./hotelSource";
 
 export default {
   hotels: [],

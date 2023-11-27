@@ -23,6 +23,9 @@ function keepJustId(key) {
   return key.data.id;
 }
 
+function showData(d){
+  console.log(d);
+}
 export function getMenuDetails(array_of_dish_ids) {
   const dish_ids = array_of_dish_ids.join(",");
   const url = BASE_URL + "recipes/informationBulk?ids=" + dish_ids;
@@ -62,7 +65,9 @@ export function geocodingConverter(geoCode) {
     },
   })
     .then(responseACB)
-    .then(keepJustLocation);
+    .then(keepJustLocation)
+    .then(showData);
+
 }
 
 export function searchLocation(query) {
@@ -75,7 +80,8 @@ export function searchLocation(query) {
     },
   })
     .then(responseACB)
-    .then(keepJustId);
+    .then(keepJustId)
+    .then(showData);
 }
 
 export function searchHotelsByLocation(searchParams) {
@@ -90,5 +96,6 @@ export function searchHotelsByLocation(searchParams) {
     },
   })
     .then(responseACB)
-    .then(keepJustResultArrayACB);
+    .then(keepJustResultArrayACB)
+    .then(showData);
 }

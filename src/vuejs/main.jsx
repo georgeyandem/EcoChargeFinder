@@ -10,7 +10,6 @@ import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);
 
 //import {createApp, watch} from "vue";
-// needed in the lab because it works with both React and Vue
 
 import { VueRoot } from "./VueRoot.jsx";
 //import {VueRoot, makeRouter} from "./VueRoot.jsx";
