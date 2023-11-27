@@ -1,4 +1,4 @@
-import { getMenuDetails } from "./dishSource";
+/**import { getMenuDetails } from "./dishSource";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, set } from "/src/teacherFirebase.js";
 import firebaseConfig from "/src/firebaseConfig.js";
@@ -80,3 +80,4 @@ export {
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 export default connectToFirebase;
+**/
