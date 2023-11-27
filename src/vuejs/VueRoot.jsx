@@ -1,4 +1,5 @@
 import Test from "../views/test.jsx"
+import HomeView from "../views/homeView.jsx"
 //import Sidebar from "./sidebarPresenter.jsx";
 //import Search from "./searchPresenter.jsx";
 //import Details from "./detailsPresenter.jsx";
@@ -6,12 +7,12 @@ import Test from "../views/test.jsx"
 import {createRouter, RouterView, createWebHashHistory} from "vue-router";
 
 export function VueRoot(props){ //makeRouter
-  if (1===1){  //props.model.ready // make it (1===0) to see else status
+  if (1===1){  //props.model.ready // make it (1===0) to view else status
   return  ( 
     <div class="flex_parent">
 
       <div><Test model ={props.model}/></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
-
+      <div><HomeView model ={props.model}/></div>
       {/*<div class="main_content"> <RouterView /> </div>*/}
 
     </div>
@@ -29,18 +30,6 @@ else {
   } 
 }
 export default VueRoot;
-/*
-if (props.model.ready) {
-        return (
-            <div class="flex_parent">
-                <div>
-                    <Sidebar model={props.model} class="sidebar"/>
-                </div>
-                
-            </div>
-        );
-    }
-}*/
 
 /*export function makeRouter(model) {
     return createRouter({

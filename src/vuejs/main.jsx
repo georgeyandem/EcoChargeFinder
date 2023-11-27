@@ -4,7 +4,7 @@
 //import "/src/firebaseModel.js";  
 
 // (1) ------------ application state (model) -----------
-import model from "/src/HotellModel.js"; 
+import model from "/src/HotelModel.js"; 
 
 import { reactive } from "vue";
 const reactiveModel = reactive(model);
