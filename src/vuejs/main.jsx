@@ -6,10 +6,9 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 // (1) ------------ application state (model) -----------
 import model from "/src/hotellModel.js";
 
-import { reactive } from "vue";
+import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);
 
-import { createApp } from "vue";
 //import {createApp, watch} from "vue";
 // needed in the lab because it works with both React and Vue
 
