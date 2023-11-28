@@ -1,5 +1,6 @@
 import resolvePromise from "./resolvePromise";
-//import searchHotelsByLocation from "./hotelSource.js";
+import {searchHotelsByLocation, getHotelDetails} from "./hotelSource.js"
+
 
 export default {
   hotels: [],
