@@ -7,10 +7,6 @@ function responseACB(response) {
   return response.json();
 }
 
-function arrayACB(array) {
-  return array[0];
-}
-
 function keepJustResultArrayACB(result) {
   return result.data;
 }
@@ -23,18 +19,31 @@ function keepJustId(key) {
   return key.data.id;
 }
 
-export function getMenuDetails(array_of_dish_ids) {
-  const dish_ids = array_of_dish_ids.join(",");
-  const url = BASE_URL + "recipes/informationBulk?ids=" + dish_ids;
+function showDataACB(d){
+  console.log(d);
+}
+export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
+
+  const dish_ids = array_of_hotel_ids.join(",");
+
+  const url = BASE_URL + "hotels/getHotelDetails" + dish_ids;
   return fetch(url, {
     method: "GET",
     headers: {
       "X-Mashape-Key": API_KEY,
     },
-  }).then(responseACB);
+  }).then(responseACB).then(showDataACB);
 }
-export function getDishDetails(id) {
-  return getMenuDetails([id]).then(arrayACB);
+/*export function getHotels(id) {     //getDishDetails
+  return getDetails([id]).then(myArrayToObjectACB).catch(errorACB);
+
+  function myArrayToObjectACB(arr) {
+    return arr[0];
+  }
+
+  function errorACB(error) {
+    console.log("ERROR: " + error);
+  }
 }
 export function searchDishes(searchParams) {
   const urlSearchParams = new URLSearchParams(searchParams);
@@ -91,4 +100,4 @@ export function searchHotelsByLocation(searchParams) {
   })
     .then(responseACB)
     .then(keepJustResultArrayACB);
-}
+}*/
