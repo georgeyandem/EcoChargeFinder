@@ -2,7 +2,7 @@ import { BASE_URL, API_KEY } from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
-    throw new Error(`HTTP error, Status: ${response.status}`);
+    throw new Error(`HTTP error, Status: ${response.status}`); // ("Error: " + response.status);
   }
   return response.json();
 }
