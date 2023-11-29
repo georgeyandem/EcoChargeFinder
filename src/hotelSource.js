@@ -15,12 +15,13 @@ function keepJustResultArrayACB(result) {
   return result.data;
 }
 
-function keepJustLocation(result) {
-  return result.location;
+function keepJustLocation(results) {
+  // the results array first element have the lat and lng
+  return results.results[0].location;
 }
 
 function keepJustId(key) {
-  return key.data.id;
+  return key.data;
 }
 
 export function getMenuDetails(array_of_dish_ids) {
@@ -92,3 +93,55 @@ export function searchHotelsByLocation(searchParams) {
     .then(responseACB)
     .then(keepJustResultArrayACB);
 }
+
+// Assuming user input is captured in a variable called userInput
+
+export function searchHotelsByUserInput(userInput) {
+  const { location, checkInDate, checkOutDate } = userInput; // Assuming user input contains location, check-in, and check-out dates
+  return searchLocation(location)
+    .then((geoCode) => geocodingConverter(geoCode))
+    .then((locationData) =>
+      searchHotelsByLocation({
+        latitude: locationData.latitude,
+        longitude: locationData.longitude,
+        checkIn: checkInDate,
+        checkOut: checkOutDate,
+      })
+    )
+    .then((hotelResults) => {
+      console.log("Hotel results:", hotelResults);
+      return hotelResults; // Return hotel results for further processing or UI handling
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error; // Propagate the error for handling in the calling context
+    });
+}
+
+const location = "London"; // Define a location to search
+/* 
+searchLocation(location)
+  .then((result) => {
+    console.log("Search Location Result:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+const geoCode = "505 Howard St, San Francisco";
+geocodingConverter(geoCode)
+  .then((results) => {
+    console.log("Search geocode Result:", results);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+const lat = "latitude=40.730610&longitude=-73.935242";
+searchHotelsByUserInput(lat)
+  .then((results) => {
+    console.log("Search geocode Result:", results);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });**/
