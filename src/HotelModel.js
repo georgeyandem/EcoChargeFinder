@@ -1,14 +1,26 @@
-import resolvePromise from "./resolvePromise";
-import {searchHotelsByLocation, getHotelDetails} from "./hotelSource.js"
+import {resolvePromise} from "./resolvePromise.js";
+import {getHotelData} from "./hotelSource.js"
 
 
 export default {
+  numberOfGuests: 2,
   hotels: [],
+  currentHotel: null,
   searchParams: {},
   searchResultsPromiseState: {},
+  currentHotelPromiseState: {},
 
   setSearchQuery(query) {
     this.searchParams.query = query;
+  },
+  setCurrentHotel(id){
+    //adding a new object property (currentHotel) which was not initialized in the constructor
+    
+    if(id !== this.currentHotel && id) {
+        resolvePromise(getHotelData(id), this.currentHotelPromiseState);
+    }
+
+    this.currentHotel = id;
   },
   //set search type "checkin, checkout"
   setSearchType(type) {

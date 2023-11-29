@@ -2,18 +2,29 @@ import Test from "../views/test.jsx"
 import HomeView from "../views/homeView.jsx"
 //import Sidebar from "./sidebarPresenter.jsx";
 //import Search from "./searchPresenter.jsx";
-//import Details from "./detailsPresenter.jsx";
+import Home from "./homePresenter.jsx";
 
 import {createRouter, RouterView, createWebHashHistory} from "vue-router";
 
+export function makeRouter(model) {
+    return createRouter({
+        history: createWebHashHistory(),
+        routes: [
+            {
+                path: "/home",
+                component: <Home model={model} />
+            },
+    
+        ]});
+}
 export function VueRoot(props){ //makeRouter
   if (1===1){  //props.model.ready // make it (1===0) to view else status
   return  ( 
     <div class="flex_parent">
 
       <div><Test model ={props.model}/></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
-      <div><HomeView model ={props.model}/></div>
-      {/*<div class="main_content"> <RouterView /> </div>*/}
+      {/*<div><HomeView model ={props.model}/></div>*/}
+      <div class="main_content"> <RouterView /> </div>
 
     </div>
   );
@@ -24,36 +35,12 @@ else {
                 <div>
                     <img src="https://brfenergi.se/iprog/loading.gif"/>
                 </div>
-                {/*<div class="main_content"> <RouterView />  </div> */}
+                <div class="main_content"> <RouterView />  </div>
             </div>
         );
-  } 
+    }  
 }
 export default VueRoot;
-
-/*export function makeRouter(model) {
-    return createRouter({
-        history: createWebHashHistory(),
-        routes: [
-            {
-                path: "/",
-                component: <Search model={model} />
-            },
-            {
-                path: "/search",
-                component: <Search model={model} />
-            },
-            {
-                path: "/details",
-                component: <Details model={model} />
-            },
-            {
-                path: "/summary",
-                component: <Summary model={model} />
-            }
-        ]});
-}*/
-
 /********************     Louai    *****************************/
 
 /*import { createRouter, createWebHistory } from 'vue-router' // import {createRouter, RouterView, createWebHashHistory} from "vue-router";

@@ -2,7 +2,7 @@ import { BASE_URL, API_KEY } from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
-    throw new Error(`HTTP error, Status: ${response.status}`); // ("Error: " + response.status);
+    throw new Error("Error: " + response.status);
   }
   return response.json();
 }
@@ -22,33 +22,35 @@ function keepJustId(key) {
 function showDataACB(d){
   console.log(d); 
 }
-function errorACB(error) {
-    console.log("ERROR: " + error);
-  }
 
 export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
 
   const dish_ids = array_of_hotel_ids.join(",");
 
-  const url = BASE_URL + "hotels/getHotelDetails?" + dish_ids;
+  const url = BASE_URL + "hotels/getHotelDetails?id=" + dish_ids;
+
   console.log("Before fetch call");
+
   return fetch(url, {
-    method: "GET",
+    //method: "GET",
     headers: {
       "X-Mashape-Key": API_KEY,
-      "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
+      //"X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
     },
-  }).then(responseACB).then(showDataACB).catch(errorACB);
+  }).then(responseACB);
+  
 }
-export function getHotel(id) {     //getDishDetails
-  return getHotelDetails([id]).then(myArrayToObjectACB).then(showDataACB).catch(errorACB);
+export function getHotelData(id) {     //getDishDetails
+  return getHotelDetails([id]).then(myArrayToObjectACB).catch(errorACB);
 
   function myArrayToObjectACB(arr) {
     return arr[0];
   }
-
+  function errorACB(error) {
+    console.log("ERROR: " + error);
+  }
 }
-export function searchDishes(searchParams) {
+/*export function searchDishes(searchParams) {
   const urlSearchParams = new URLSearchParams(searchParams);
   const url = BASE_URL + "recipes/complexSearch?" + urlSearchParams.toString();
 
@@ -107,3 +109,4 @@ export function searchHotelsByLocation(searchParams) {
     .then(keepJustResultArrayACB)
     .then(showDataACB);
 }
+*/

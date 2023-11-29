@@ -9,7 +9,7 @@ import model from "/src/hotelModel.js";
 import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);
 
-import { VueRoot } from "./VueRoot.jsx";  //import {VueRoot, makeRouter} from "./VueRoot.jsx";
+import { VueRoot, makeRouter } from "./VueRoot.jsx";  //import {VueRoot, makeRouter} from "./VueRoot.jsx";
 //import connectToFirebase, { readFromFirebase } from "../firebaseModel.js";
 const app = createApp(<VueRoot model={reactiveModel} />);
 
