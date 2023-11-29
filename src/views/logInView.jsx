@@ -15,7 +15,7 @@ export default {
       logout();
     },
     signup() {
-      signup();
+      signup(this.email, this.password);
     },
   },
   render() {

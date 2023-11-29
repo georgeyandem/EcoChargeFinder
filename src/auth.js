@@ -7,6 +7,7 @@ import {
   sendPasswordResetEmail,
   createUserWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const app = initializeApp(config);
@@ -43,15 +44,31 @@ export function signup(email, password) {
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
-      console.log("Signed In:", user.uid);
+      sendEmailVerification(user); // send email verification to the user
+      console.log("Signed up:", user.uid);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error("SignIn Error:", errorCode, errorMessage);
+      console.error("SignUp Error:", errorCode, errorMessage);
       // ..
     });
 }
+
+// Check email verification status on sign-in
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    if (user.emailVerified) {
+      console.log("Email is verified, proceed with app logic");
+    } else {
+      console.log(
+        "Email is not verified, prompt the user to verify their email"
+      );
+    }
+  } else {
+    console.log("User is signed out");
+  }
+});
 
 /*
 // Example usage:
