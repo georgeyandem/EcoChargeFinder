@@ -1,5 +1,11 @@
 // logInView.jsx
-import { login, logout, signup } from "../auth.js";
+import {
+  login,
+  logout,
+  signup,
+  password_reset,
+  loginByGoogle,
+} from "../auth.js";
 export default {
   data() {
     return {
@@ -16,6 +22,12 @@ export default {
     },
     signup() {
       signup(this.email, this.password);
+    },
+    reset() {
+      password_reset(this.email);
+    },
+    google() {
+      loginByGoogle();
     },
   },
   render() {
@@ -38,6 +50,8 @@ export default {
         <button onClick={this.login}>Login</button>
         <button onClick={this.logout}>Logout</button>
         <button onClick={this.signup}>Signup</button>
+        <button onClick={this.reset}>Forget your Password</button>
+        <button onClick={this.google}>Login with Google</button>
       </div>
     );
   },
