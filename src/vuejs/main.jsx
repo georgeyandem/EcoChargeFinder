@@ -9,11 +9,11 @@ import model from "/src/hotelModel.js";
 import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);
 
-import { VueRoot, makeRouter } from "./VueRoot.jsx";  //import {VueRoot, makeRouter} from "./VueRoot.jsx";
+import { VueRoot, makeRouter } from "./VueRoot.jsx"; //{ VueRoot, makeRouter }
 //import connectToFirebase, { readFromFirebase } from "../firebaseModel.js";
 const app = createApp(<VueRoot model={reactiveModel} />);
 
-//app.use(makeRouter(reactiveModel));
+app.use(makeRouter(reactiveModel));
 
 app.mount("#root"); // WARNNING: LAB INSTRUCTIONS => mounts the app in the page DIV with the id "root"
 // to see the DIV, look at vue.html in the developer tools Sources
@@ -21,7 +21,7 @@ app.mount("#root"); // WARNNING: LAB INSTRUCTIONS => mounts the app in the page 
 
 // ------ for debug purposes ----------
 //window.myModel= model;             // make the model available in the Console
-//window.myModel= reactiveModel;  
+window.myModel= reactiveModel;  
 
 // Empty search
 //reactiveModel.doSearch({});

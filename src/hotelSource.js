@@ -1,4 +1,4 @@
-import { BASE_URL, API_KEY } from "./apiConfig.js";
+import { BASE_URL, API_KEY ,API_HOST} from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
@@ -23,7 +23,19 @@ function showDataACB(d){
   console.log(d); 
 }
 
-export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
+export function getHotelDetails(arr){
+  const url = BASE_URL + "hotels/getHotelDetails?id=%3CREQUIRED%3E&checkIn=%3CREQUIRED%3E&checkOut=%3CREQUIRED%3E&currency=USD"; // {?id=}
+  console.log("Before fetch call");
+  return fetch (url, {
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": API_KEY,
+      "X-RapidAPI-Host": API_HOST,
+    },
+  }).then(responseACB).then(keepJustId).then(showDataACB);
+  
+}
+/*export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
 
   const dish_ids = array_of_hotel_ids.join(",");
 
@@ -32,10 +44,10 @@ export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
   console.log("Before fetch call");
 
   return fetch(url, {
-    //method: "GET",
+    method: "GET",
     headers: {
       "X-Mashape-Key": API_KEY,
-      //"X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
+      "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
     },
   }).then(responseACB);
   
@@ -49,7 +61,8 @@ export function getHotelData(id) {     //getDishDetails
   function errorACB(error) {
     console.log("ERROR: " + error);
   }
-}
+}*/
+
 /*export function searchDishes(searchParams) {
   const urlSearchParams = new URLSearchParams(searchParams);
   const url = BASE_URL + "recipes/complexSearch?" + urlSearchParams.toString();

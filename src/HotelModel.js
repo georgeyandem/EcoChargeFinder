@@ -1,5 +1,5 @@
 import {resolvePromise} from "./resolvePromise.js";
-import {getHotelData} from "./hotelSource.js"
+import {getHotelDetails} from "./hotelSource.js"
 
 
 export default {
@@ -8,19 +8,15 @@ export default {
   currentHotel: null,
   searchParams: {},
   searchResultsPromiseState: {},
-  currentHotelPromiseState: {},
+  currentHotelPromiseState:{},
 
   setSearchQuery(query) {
     this.searchParams.query = query;
   },
-  setCurrentHotel(id){
+  setCurrentHotel(arr){
     //adding a new object property (currentHotel) which was not initialized in the constructor
     
-    if(id !== this.currentHotel && id) {
-        resolvePromise(getHotelData(id), this.currentHotelPromiseState);
-    }
-
-    this.currentHotel = id;
+        resolvePromise(getHotelDetails(arr), this.currentHotelPromiseState);
   },
   //set search type "checkin, checkout"
   setSearchType(type) {

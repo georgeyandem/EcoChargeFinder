@@ -8,6 +8,7 @@ export default function Home(props) {
     function addButtonClickACB() {
         if (state_data) {
             console.log("test of addButtonClickACB");
+            console.log(props.model)
         }
     }
 
@@ -24,8 +25,7 @@ export default function Home(props) {
     if (state_data && state_promise) {
         return (
             <HomeView       HotelData={state_data}
-                            guests={props.model.numberOfGuests}
-                            //isDishInMenu={props.model.dishes.find(searchCB)}
+                            guests={props.model.currentHotel}
                             onAddButtonClick={addButtonClickACB}
             />
         );
@@ -39,7 +39,9 @@ export default function Home(props) {
     
     if (!state_promise) {
         return (
-            <span>NO DATA</span>
+            <div>
+                <span>NO DATA</span>
+            </div>
         );
     }    
 }

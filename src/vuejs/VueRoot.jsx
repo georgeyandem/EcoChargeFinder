@@ -1,8 +1,8 @@
-import Test from "../views/test.jsx"
-import HomeView from "../views/homeView.jsx"
 //import Sidebar from "./sidebarPresenter.jsx";
 //import Search from "./searchPresenter.jsx";
+import Test from "../views/test.jsx"
 import Home from "./homePresenter.jsx";
+
 
 import {createRouter, RouterView, createWebHashHistory} from "vue-router";
 
@@ -11,19 +11,25 @@ export function makeRouter(model) {
         history: createWebHashHistory(),
         routes: [
             {
+                path: "/",
+                component: <Test model={model} />
+            },
+            {
                 path: "/home",
-                component: <Home model={model} />
+                component: <Home model={model.title} />
             },
     
         ]});
 }
-export function VueRoot(props){ //makeRouter
-  if (1===1){  //props.model.ready // make it (1===0) to view else status
+
+export function VueRoot(props){ 
+
+  if (props.model.ready){  //props.model.ready // make it (1===0) to view else status
   return  ( 
     <div class="flex_parent">
 
       <div><Test model ={props.model}/></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
-      {/*<div><HomeView model ={props.model}/></div>*/}
+      <div><Home model ={props.model}/></div>
       <div class="main_content"> <RouterView /> </div>
 
     </div>
@@ -33,7 +39,7 @@ else {
   return (
             <div class="flex_parent">
                 <div>
-                    <img src="https://brfenergi.se/iprog/loading.gif"/>
+                  <img src="https://brfenergi.se/iprog/loading.gif"/>
                 </div>
                 <div class="main_content"> <RouterView />  </div>
             </div>
@@ -41,28 +47,3 @@ else {
     }  
 }
 export default VueRoot;
-/********************     Louai    *****************************/
-
-/*import { createRouter, createWebHistory } from 'vue-router' // import {createRouter, RouterView, createWebHashHistory} from "vue-router";
-import HomeView from '../views/HomeView.vue'
-
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: 
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
-
-export default router*/
