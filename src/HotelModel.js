@@ -1,4 +1,4 @@
-import resolvePromise from "./resolvePromise";
+import resolvePromise from "./resolvePromise.js";
 //import searchHotelsByLocation from "./hotelSource.js";
 
 export default {
