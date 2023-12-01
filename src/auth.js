@@ -109,6 +109,6 @@ onAuthStateChanged(auth, (user) => {
       );
     }
   } else {
-    console.log("User is signed out");
+    console.log("No user is signed");
   }
 });
