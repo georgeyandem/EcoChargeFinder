@@ -1,6 +1,8 @@
 {
-  "name": "module",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -12,7 +14,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
-    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
     "vite": "^4.4.11"
   }
 }
