@@ -12,7 +12,7 @@ export function VueRoot(props) {
   if (1 === 1) {
     //props.model.ready // make it (1===0) to view else status
     return (
-      <div class="flex_parent">
+      <div>
         <div>
           <Test model={props.model} />
         </div>{" "}
@@ -28,7 +28,7 @@ export function VueRoot(props) {
     );
   } else {
     return (
-      <div class="flex_parent">
+      <div>
         <div>
           <img src="https://brfenergi.se/iprog/loading.gif" />
         </div>

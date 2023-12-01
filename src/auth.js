@@ -112,18 +112,3 @@ onAuthStateChanged(auth, (user) => {
     console.log("User is signed out");
   }
 });
-
-/*
-// Example usage:
-// Assume you have HTML elements with id="email", id="password", id="loginBtn", id="logoutBtn"
-
-document.getElementById("loginBtn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  loginWithEmailPassword(email, password);
-});
-
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  logout();
-});
-*/
