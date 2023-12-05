@@ -2,7 +2,7 @@ import resolvePromise from "./resolvePromise";
 //import searchHotelsByLocation from "./hotelSource";
 
 export default {
-  hotels: [],
+  chargers: [],
   searchParams: {},
   searchResultsPromiseState: {},
 

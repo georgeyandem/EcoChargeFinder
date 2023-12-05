@@ -26,32 +26,6 @@ function keepJustId(key) {
 function showData(d){
   console.log(d);
 }
-export function getMenuDetails(array_of_dish_ids) {
-  const dish_ids = array_of_dish_ids.join(",");
-  const url = BASE_URL + "recipes/informationBulk?ids=" + dish_ids;
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-Mashape-Key": API_KEY,
-    },
-  }).then(responseACB);
-}
-export function getDishDetails(id) {
-  return getMenuDetails([id]).then(arrayACB);
-}
-export function searchDishes(searchParams) {
-  const urlSearchParams = new URLSearchParams(searchParams);
-  const url = BASE_URL + "recipes/complexSearch?" + urlSearchParams.toString();
-
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-Mashape-Key": API_KEY,
-    },
-  })
-    .then(responseACB)
-    .then(keepJustResultArrayACB);
-}
 
 // convert geocode to latitude and langitude
 export function geocodingConverter(geoCode) {
