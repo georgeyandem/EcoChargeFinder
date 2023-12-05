@@ -4,7 +4,7 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 //import "/src/firebaseModel.js";
 
 // (1) ------------ application state (model) -----------
-import model from "/src/hotelModel.js";
+import model from "/src/EvModel.js";
 
 import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);

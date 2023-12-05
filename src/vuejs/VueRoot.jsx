@@ -1,6 +1,5 @@
 //import Sidebar from "./sidebarPresenter.jsx";
 //import Search from "./searchPresenter.jsx";
-import Test from "../views/test.jsx"
 import Home from "./homePresenter.jsx";
 
 
@@ -12,11 +11,7 @@ export function makeRouter(model) {
         routes: [
             {
                 path: "/",
-                component: <Test model={model} />
-            },
-            {
-                path: "/home",
-                component: <Home model={model.title} />
+                component: <Home model={model} />
             },
     
         ]});
@@ -28,7 +23,6 @@ export function VueRoot(props){
   return  ( 
     <div class="flex_parent">
 
-      <div><Test model ={props.model}/></div> {/* ==> in the LAB : <Sidebar model={props.model} class="sidebar"/>*/}
       <div><Home model ={props.model}/></div>
       <div class="main_content"> <RouterView /> </div>
 

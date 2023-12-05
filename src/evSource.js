@@ -1,14 +1,10 @@
-import { BASE_URL, API_KEY } from "./apiConfig.js";
+import { BASE_URL, API_KEY ,API_HOST} from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
-    throw new Error(`HTTP error, Status: ${response.status}`);
+    throw new Error("Error: " + response.status);
   }
   return response.json();
-}
-
-function arrayACB(array) {
-  return array[0];
 }
 
 function keepJustResultArrayACB(result) {
@@ -23,8 +19,63 @@ function keepJustId(key) {
   return key.data.id;
 }
 
-function showData(d){
-  console.log(d);
+function showDataACB(d){
+  console.log(d); 
+}
+
+export function getHotelDetails(arr){
+  const url = BASE_URL + "hotels/getHotelDetails?id=%3CREQUIRED%3E&checkIn=%3CREQUIRED%3E&checkOut=%3CREQUIRED%3E&currency=USD"; // {?id=}
+  console.log("Before fetch call");
+  return fetch (url, {
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": API_KEY,
+      "X-RapidAPI-Host": API_HOST,
+    },
+  }).then(responseACB).then(keepJustId).then(showDataACB);
+  
+}
+/*export function getHotelDetails(array_of_hotel_ids) {   //getMenuDetails
+
+  const dish_ids = array_of_hotel_ids.join(",");
+
+  const url = BASE_URL + "hotels/getHotelDetails?id=" + dish_ids;
+
+  console.log("Before fetch call");
+
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": API_KEY,
+      "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
+    },
+  }).then(responseACB);
+  
+}
+export function getHotelData(id) {     //getDishDetails
+  return getHotelDetails([id]).then(myArrayToObjectACB).catch(errorACB);
+
+  function myArrayToObjectACB(arr) {
+    return arr[0];
+  }
+  function errorACB(error) {
+    console.log("ERROR: " + error);
+  }
+}*/
+
+/*export function searchDishes(searchParams) {
+  const urlSearchParams = new URLSearchParams(searchParams);
+  const url = BASE_URL + "recipes/complexSearch?" + urlSearchParams.toString();
+
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "X-Mashape-Key": API_KEY,
+    },
+  })
+    .then(responseACB)
+    .then(keepJustResultArrayACB)
+    .then(showDataACB);
 }
 
 // convert geocode to latitude and langitude
@@ -40,8 +91,7 @@ export function geocodingConverter(geoCode) {
   })
     .then(responseACB)
     .then(keepJustLocation)
-    .then(showData);
-
+    .then(showDataACB);
 }
 
 export function searchLocation(query) {
@@ -55,13 +105,12 @@ export function searchLocation(query) {
   })
     .then(responseACB)
     .then(keepJustId)
-    .then(showData);
+    .then(showDataACB);
 }
 
 export function searchHotelsByLocation(searchParams) {
   const urlSearchParams = new urlSearchParams(searchParams);
-  const url =
-    BASE_URL + "hotels/searchHotelsByLocation?" + urlSearchParams.toString();
+  const url = BASE_URL + "hotels/searchHotelsByLocation?" + urlSearchParams.toString();
   return fetch(url, {
     method: "GET",
     headers: {
@@ -71,5 +120,6 @@ export function searchHotelsByLocation(searchParams) {
   })
     .then(responseACB)
     .then(keepJustResultArrayACB)
-    .then(showData);
+    .then(showDataACB);
 }
+*/
