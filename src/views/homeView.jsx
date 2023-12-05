@@ -2,7 +2,9 @@
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
 
 function HomeView(props){
-    //console.log(props.model);
+
+    //console.log(props);
+
     return (
         <div>
             <br/>
