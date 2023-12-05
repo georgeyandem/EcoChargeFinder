@@ -1,9 +1,9 @@
 import HomeView from "../views/homeView.jsx";
 
 export default function Home(props) {
-    const state_data    = props.model.currentHotelPromiseState.data;
-    const state_promise = props.model.currentHotelPromiseState.promise;
-    const state_error   = props.model.currentHotelPromiseState.error;
+    const state_data    = props.model.currentEvPromiseState.data;
+    const state_promise = props.model.currentEvPromiseState.promise;
+    const state_error   = props.model.currentEvPromiseState.error;
     
     function addButtonClickACB() {
         if (state_data) {
@@ -24,8 +24,8 @@ export default function Home(props) {
 
     if (state_data && state_promise) {
         return (
-            <HomeView       HotelData={state_data}
-                            guests={props.model.currentHotel}
+            <HomeView       EvData={state_data}
+                            guests={props.model.currentEv}
                             onAddButtonClick={addButtonClickACB}
             />
         );

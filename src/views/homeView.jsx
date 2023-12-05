@@ -1,3 +1,6 @@
+//import {sortIngredients} from "/src/utilities.js";
+//import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
+
 function HomeView(props){
     //console.log(props.model);
     return (
