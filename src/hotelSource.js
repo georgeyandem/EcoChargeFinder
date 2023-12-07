@@ -118,7 +118,27 @@ export function searchHotelsByUserInput(userInput) {
     });
 }
 
-const location = "London"; // Define a location to search
+export function poiList(key) {
+  const url = BASE_URL + "openapi?key=" + key;
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "X-API-Key": API_KEY,
+      Accept: "text/plain",
+    },
+  });
+  //.then(keepJustResultArrayACB);
+}
+
+const key = API_KEY; // Define a location to search
+poiList(key)
+  .then((result) => {
+    console.log("Search Location Result:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
 /* 
 searchLocation(location)
   .then((result) => {

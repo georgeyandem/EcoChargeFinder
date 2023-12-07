@@ -43,10 +43,15 @@ export function loginByGoogle() {
 export function login(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
-      console.log("Logged in:", user.uid);
-      alert("logged on " + user.email);
+      if (user.emailVerified) {
+        // Signed in
+        console.log("Logged in:", user.uid);
+        alert("logged on " + user.email);
+      } else {
+        console.log("Email not verified. Please verify your email to log in.");
+        alert("Please verify your email to log in.");
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -56,18 +61,25 @@ export function login(email, password) {
 }
 
 export function logout() {
-  signOut(auth)
-    .then(() => {
-      // Logout successful, handle UI changes or redirect
-      console.log("Logged out");
-      alert("Logged out");
-    })
-    .catch((error) => {
-      // Handle logout errors
-      console.error("Logout Error:", error);
-    });
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      if (user.emailVerified) {
+        // User is logged in and email is verified, proceed with logout
+        signOut(auth)
+          .then(() => {
+            console.log("Logged out");
+            alert("Logged out");
+          })
+          .catch((error) => {
+            console.error("Logout Error:", error);
+          });
+      }
+    } else {
+      // User is not logged in, no action needed
+      console.log("No user is signed in");
+    }
+  });
 }
-
 export function signup(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

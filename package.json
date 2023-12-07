@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors-anywhere": "^0.4.4",
     "firebase": "^10.6.0",
+    "uuid": "^9.0.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },

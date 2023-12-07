@@ -2,10 +2,17 @@ import resolvePromise from "./resolvePromise.js";
 //import searchHotelsByLocation from "./hotelSource.js";
 
 export default {
-  hotels: [],
-  searchParams: {},
-  searchResultsPromiseState: {},
+  password: "",
+  email: "",
+  setPassword(newPass) {
+    this.password = newPass;
+  },
 
+  setEmail(newEmail) {
+    this.email = newEmail;
+  },
+
+  /*
   setSearchQuery(query) {
     this.searchParams.query = query;
   },
@@ -18,4 +25,5 @@ export default {
     const searchPromise = searchHotelsByLocation(searchParams);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
   },
+  */
 };
