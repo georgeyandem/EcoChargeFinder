@@ -1,29 +1,31 @@
-import "/src/style.css";
+//import {sortIngredients} from "/src/utilities.js";
+//import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
 
-function SearchResultsView(props) {
+function SearchView(props){
+
+  function aboutACB(){
+    window.location.hash="#/about";
+  }
+  function homeACB(){
+    window.location.hash="#/"
+  }
+  function buttonClickACB(){
+    console.log("Search button works!");
+  }
+  
     return (
-        <div>
-            {[...props.searchResults].map(searchResultsCB)}
-        </div>
-    );
+        <div> 
+            <button onClick={aboutACB}>About us</button>
+            <button onClick={homeACB}>Back to Home</button>
 
-    function searchResultsCB(search_result) {
-        //console.log(search_result)
-        function resultClickACB(evt) {
-            props.onResultClick(search_result);
-            window.location.hash="#/details";       //3.3
-        }
+            <input 
+              type="text" 
+              value={props.text || ""}
+            />
 
-        return (
-            <span   key={search_result.id} 
-                    onClick={resultClickACB} 
-                    class="search_result"
-                    value={search_result}>
-                <img src={search_result.image} height="100"></img>
-                <div>{search_result.title}</div>
-            </span>
-        )
-    }
+            <button onClick={buttonClickACB}>Search!</button>
+            <br />
+        </div>);
 }
+export default SearchView;
 
-export default SearchResultsView;
