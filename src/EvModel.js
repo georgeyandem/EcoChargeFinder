@@ -1,14 +1,15 @@
-
-import resolvePromise from "./resolvePromise";
+//import resolvePromise from "./resolvePromise";
 //import searchHotelsByLocation from "./hotelSource";
 
 export default {
-  chargers: [],
+  numberOfCharger: 2,
+  chargers: [{id:"1" , location:"Stockholm" , street:"kth-street"}], // this is only temporary, until API is fixed
   searchParams: {},
-  searchResultsPromiseState: {},
+  currentEvPromiseState:{},
+  searchResultsPromiseState:{},
+}
 
-
-  setSearchQuery(query) {
+  /*setSearchQuery(query) {
     this.searchParams.query = query;
   },
 
@@ -21,4 +22,4 @@ export default {
     const searchPromise = searchHotelsByLocation(searchParams);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
   },
-};
+};*/
