@@ -3,30 +3,32 @@
 
 function HomeView(props){
 
-    //console.log(props);
-
+  function aboutACB(){
+    window.location.hash="#/about";
+  }
+  function findChargerACB(){
+    window.location.hash="#/search";
+  }
+  function getinfoCB(e){
     return (
-        <div>
-            <br/>
-            <div>open the console to see the model</div>
-            <br/>
-            <div><button>Ok!</button></div>
-            <br/>
+      <span>
+        <br />
+        {e.id} - {e.location} - {e.street} 
+      </span>
+    )
+  }
+ 
+    return (
+        <div> 
+            <button onClick={aboutACB}>About us</button>
+            <button onClick={findChargerACB}>find a charger</button>
+            <div>
+            {[...props.info].map(getinfoCB)}
+            </div>
+            <br />
+            number of chargers: {props.number}
 
         </div>);
 }
 export default HomeView;
 
-/*function Test(props){
-  function backACB(evt){
-    console.log("back button works");
-        window.location.hash="/home";
-  }
-    return (
-        <div>
-          <button onClick={backACB}>the test view works</button>
-        </div>
-);
-}
-
-export default Test;*/
