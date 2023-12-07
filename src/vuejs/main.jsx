@@ -1,10 +1,11 @@
 // this file is same as index.jsx in LAB from "./src/vuejs/index.jsx"
-
+import "/src/assets/style.css";
 import "/src/teacherFetch.js"; // protection against fetch() in infinite re-render
 //import "/src/firebaseModel.js";
 
 // (1) ------------ application state (model) -----------
 import model from "/src/HotelModel.js";
+import map from "/src/components/map.vue";
 
 import { reactive, createApp } from "vue";
 const reactiveModel = reactive(model);

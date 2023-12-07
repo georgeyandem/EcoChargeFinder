@@ -5,6 +5,7 @@ import LogInView from "../vuejs/loginpresenter.jsx";
 //import Sidebar from "./sidebarPresenter.jsx";
 //import Search from "./searchPresenter.jsx";
 //import Details from "./detailsPresenter.jsx";
+import Map from "/src/components/map.vue";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 
@@ -24,6 +25,9 @@ export function VueRoot(props) {
         {/*<div class="main_content"> <RouterView /> </div>*/}
         <div>
           <LogInView model={props.model} />
+        </div>
+        <div>
+          <Map model={props.model} />
         </div>
       </div>
     );

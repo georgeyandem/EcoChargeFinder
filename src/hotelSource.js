@@ -51,94 +51,33 @@ export function searchDishes(searchParams) {
     .then(keepJustResultArrayACB);
 }
 
-// convert geocode to latitude and langitude
-export function geocodingConverter(geoCode) {
-  const url =
-    "https://trueway-geocoding.p.rapidapi.com/Geocode?address=" + geoCode;
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": API_KEY,
-      "X-RapidAPI-Host": "trueway-geocoding.p.rapidapi.com",
-    },
-  })
-    .then(responseACB)
-    .then(keepJustLocation);
-}
+const city = "london";
+const params = {
+  q: "${city}, charging_station",
+  format: "json",
+  addressdetails: "addressdetails",
+};
 
-export function searchLocation(query) {
-  const url = BASE_URL + "hotels/searchLocation?query=" + query;
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": API_KEY,
-      "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
-    },
-  })
-    .then(responseACB)
-    .then(keepJustId);
-}
-
-export function searchHotelsByLocation(searchParams) {
-  const urlSearchParams = new urlSearchParams(searchParams);
-  const url =
-    BASE_URL + "hotels/searchHotelsByLocation?" + urlSearchParams.toString();
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": API_KEY,
-      "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
-    },
-  })
-    .then(responseACB)
-    .then(keepJustResultArrayACB);
-}
-
-// Assuming user input is captured in a variable called userInput
-
-export function searchHotelsByUserInput(userInput) {
-  const { location, checkInDate, checkOutDate } = userInput; // Assuming user input contains location, check-in, and check-out dates
-  return searchLocation(location)
-    .then((geoCode) => geocodingConverter(geoCode))
-    .then((locationData) =>
-      searchHotelsByLocation({
-        latitude: locationData.latitude,
-        longitude: locationData.longitude,
-        checkIn: checkInDate,
-        checkOut: checkOutDate,
-      })
-    )
-    .then((hotelResults) => {
-      console.log("Hotel results:", hotelResults);
-      return hotelResults; // Return hotel results for further processing or UI handling
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      throw error; // Propagate the error for handling in the calling context
-    });
-}
-
-export function poiList(key) {
-  const url = BASE_URL + "openapi?key=" + key;
+export function searchMap(param) {
+  const urlSearch = new URLSearchParams(param);
+  const url = BASE_URL + "search?" + urlSearch.toString();
   return fetch(url, {
     method: "GET",
     headers: {
       "X-API-Key": API_KEY,
-      Accept: "text/plain",
     },
-  });
-  //.then(keepJustResultArrayACB);
+  }).then(responseACB);
 }
 
-const key = API_KEY; // Define a location to search
-poiList(key)
+const key = params; // Define a location to search
+/*searchMap(key)
   .then((result) => {
     console.log("Search Location Result:", result);
   })
   .catch((error) => {
     console.error("Error:", error);
   });
-
+*/
 /* 
 searchLocation(location)
   .then((result) => {
