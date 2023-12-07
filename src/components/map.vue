@@ -20,7 +20,13 @@ export default {
   components: { ErrorModal },
   setup() {
     let map;
-    onMounted(() => {
+    const coords = ref(null);
+    const fetchCoords = ref(null);
+    const marker = ref(null);
+    const geoError = ref(null);
+    const geoErrorMsg = ref(null);
+
+    function mapACB() {
       // init map
       map = leaflet.map("map").setView([28.538336, -81.379234], 10);
 
@@ -34,17 +40,13 @@ export default {
         .addTo(map);
 
       getLocation();
-    });
+    }
+
+    onMounted(mapACB);
 
     // Method to update coordinates
 
-    const coords = ref(null);
-    const fetchCoords = ref(null);
-    const marker = ref(null);
-    const geoError = ref(null);
-    const geoErrorMsg = ref(null);
-
-    const getLocation = () => {
+    function getLocation() {
       // check if we have the coords
       if (sessionStorage.getItem("coords")) {
         coords.value = JSON.parse(sessionStorage.getItem("coords"));
@@ -52,11 +54,11 @@ export default {
         return;
       }
       fetchCoords.value = true;
-      // user coord
+      // user coords
       navigator.geolocation.getCurrentPosition(setCoords, getError);
-    };
+    }
 
-    const setCoords = (pos) => {
+    function setCoords(pos) {
       //console.log(pos);
       //stop fetching coord
       fetchCoords.value = null;
@@ -73,22 +75,22 @@ export default {
       coords.value = setSessionCoord;
 
       plotlocation(coords.value);
-    };
+    }
 
-    const getError = (err) => {
+    function getError(err) {
       // if there is an error
       console.log(err);
       fetchCoords.value = null;
       geoError.value = true;
       geoErrorMsg.value = err.message;
-    };
+    }
 
-    const closeError = () => {
+    function closeError() {
       geoError.value = null;
       geoErrorMsg.value = null;
-    };
+    }
 
-    const plotlocation = (coords) => {
+    function plotlocation(coords) {
       const marker = leaflet.icon({
         iconUrl: mapMarkerRed,
         iconSize: [30, 30],
@@ -102,7 +104,7 @@ export default {
 
       // set map view to current location
       map.setView([coords.lat, coords.lng], 12);
-    };
+    }
 
     return { coords, marker, closeError, geoError, geoErrorMsg };
   },
