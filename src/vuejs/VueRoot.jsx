@@ -1,11 +1,16 @@
-import Test from "../views/test.jsx";
-import HomeView from "../views/homeView.jsx";
+
+//import Sidebar from "./sidebarPresenter.jsx";
+//import Search from "./searchPresenter.jsx";
+import Home from "./homePresenter.jsx";
+import About from "./aboutPresenter.jsx";
+import Search from "./searchPresenter.jsx";
 import LogInView from "../vuejs/loginpresenter.jsx";
 import Map from "/src/components/map.vue";
-import SearchView from "../vuejs/searchPresenter.jsx";
+
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import SearchResultView from "../views/searchResultView.jsx";
+
 
 export function VueRoot(props) {
   //makeRouter
@@ -44,54 +49,48 @@ export function VueRoot(props) {
       </div>
     );
   }
-}
-export default VueRoot;
 
-/*export function makeRouter(model) {
+export function makeRouter(model) {
     return createRouter({
         history: createWebHashHistory(),
         routes: [
             {
                 path: "/",
-                component: <Search model={model} />
+                component: <Home model={model} />
             },
             {
-                path: "/search",
-                component: <Search model={model} />
+              path: "/about",
+              component: <About model={model} />
             },
             {
-                path: "/details",
-                component: <Details model={model} />
+              path: "/search",
+              component: <Search model={model} />
             },
-            {
-                path: "/summary",
-                component: <Summary model={model} />
-            }
         ]});
-}*/
+}
 
-/********************     Louai    *****************************/
+export function VueRoot(props){ 
 
-/*import { createRouter, createWebHistory } from 'vue-router' // import {createRouter, RouterView, createWebHashHistory} from "vue-router";
-import HomeView from '../views/HomeView.vue'
+  if (1===1){  //props.model.ready // make it (1===0) to view else status
+  return  ( 
+    <div class="flex_parent">
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: 
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
+      {/*<div><Home model ={props.model}/></div>*/}
+      <div class="main_content"> <RouterView /> </div>
 
-export default router*/
+    </div>
+  );
+}
+else {
+  return (
+            <div class="flex_parent">
+                <div>
+                  <img src="https://brfenergi.se/iprog/loading.gif"/>
+                </div>
+                <div class="main_content"> <RouterView />  </div>
+            </div>
+        );
+    }  
+
+}
+export default VueRoot;

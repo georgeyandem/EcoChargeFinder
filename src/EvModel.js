@@ -6,6 +6,7 @@ export default {
   email: "",
   text: "",
   searchParams: {},
+  currentEvPromiseState: {},
   searchResultsPromiseState: {},
 
   setPassword(newPass) {
