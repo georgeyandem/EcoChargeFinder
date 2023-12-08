@@ -10,7 +10,7 @@ function AboutView(props) {
       * Contact us
       <br />
       <br />
-      <img src="../../public/EcoChargeFinder_icon.png" />
+      <img src="/EcoChargeFinder_icon.png" />
       <button onClick={backToHomeACB}>Back to Home Page </button>
     </div>
   );
