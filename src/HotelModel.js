@@ -1,9 +1,13 @@
 import resolvePromise from "./resolvePromise.js";
-//import searchHotelsByLocation from "./hotelSource.js";
+import searchMap from "../src/hotelSource.js";
 
 export default {
   password: "",
   email: "",
+  text: "",
+  searchParams: {},
+  searchResultsPromiseState: {},
+
   setPassword(newPass) {
     this.password = newPass;
   },
@@ -12,18 +16,13 @@ export default {
     this.email = newEmail;
   },
 
-  /*
-  setSearchQuery(query) {
-    this.searchParams.query = query;
+  setSearch(location) {
+    this.text = location;
+    //this.searchParams.type = type;
   },
-  //set search type "checkin, checkout"
-  setSearchType(type) {
-    this.searchParams.type = type;
-  },
-  // searching
+
   doSearch(searchParams) {
-    const searchPromise = searchHotelsByLocation(searchParams);
+    const searchPromise = searchMap(searchParams.type);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
   },
-  */
 };

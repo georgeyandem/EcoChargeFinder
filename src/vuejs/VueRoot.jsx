@@ -1,11 +1,8 @@
 import Test from "../views/test.jsx";
 import HomeView from "../views/homeView.jsx";
-//import LogInView from "../views/logInView.jsx";
 import LogInView from "../vuejs/loginpresenter.jsx";
-//import Sidebar from "./sidebarPresenter.jsx";
-//import Search from "./searchPresenter.jsx";
-//import Details from "./detailsPresenter.jsx";
 import Map from "/src/components/map.vue";
+import SearchView from "../vuejs/searchPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 
@@ -25,6 +22,11 @@ export function VueRoot(props) {
         {/*<div class="main_content"> <RouterView /> </div>*/}
         <div>
           <LogInView model={props.model} />
+        </div>
+        <div class="w-full md:w-auto absolute md:top-[120px] md:left-[60px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent">
+          <div>
+            <SearchView models={props.model} />
+          </div>
         </div>
         <div>
           <Map model={props.model} />

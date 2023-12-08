@@ -58,7 +58,12 @@ const params = {
   addressdetails: "addressdetails",
 };
 
-export function searchMap(param) {
+export default function searchMap(city) {
+  const param = {
+    q: `${city}, charging_station`,
+    format: "json",
+    addressdetails: "addressdetails",
+  };
   const urlSearch = new URLSearchParams(param);
   const url = BASE_URL + "search?" + urlSearch.toString();
   return fetch(url, {
@@ -68,9 +73,9 @@ export function searchMap(param) {
     },
   }).then(responseACB);
 }
-
+/*
 const key = params; // Define a location to search
-/*searchMap(key)
+searchMap(key)
   .then((result) => {
     console.log("Search Location Result:", result);
   })
