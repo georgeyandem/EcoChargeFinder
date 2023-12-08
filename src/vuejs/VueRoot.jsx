@@ -5,6 +5,7 @@ import About from "./aboutPresenter.jsx";
 import Search from "./searchPresenter.jsx";
 import Map from "/src/components/map.vue";
 import Login from "./loginPresenter.jsx";
+import TopbarView from "./topBarPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 
@@ -43,8 +44,11 @@ export function VueRoot(props) {
   if (1 === 1) {
     //props.model.ready // make it (1===0) to view else status
     return (
-      <div class="flex_parent">
+      <div>
         {/*<div><Home model ={props.model}/></div>*/}
+        <div class="sidebar">
+          <TopbarView model={props.model} />
+        </div>
         <div class="main_content">
           {" "}
           <RouterView />{" "}
@@ -53,13 +57,12 @@ export function VueRoot(props) {
     );
   } else {
     return (
-      <div class="flex_parent">
+      <div>
         <div>
           <img src="https://brfenergi.se/iprog/loading.gif" />
         </div>
         <div class="main_content">
-          {" "}
-          <RouterView />{" "}
+          <RouterView />
         </div>
       </div>
     );

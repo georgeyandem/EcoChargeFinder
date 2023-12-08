@@ -15,11 +15,22 @@ function LogInView(props) {
           autocomplete="current-password"
         />
       </form>
-      <button onClick={loginACB}>Login</button>
-      <button onClick={logoutACB}>Logout</button>
-      <button onClick={signupACB}>Signup</button>
-      <button onClick={resetACB}>Forget your Password</button>
-      <button onClick={googleACB}>Login with Google</button>
+      <button class="forget-password-button" onClick={loginACB}>
+        Login
+      </button>
+      <button class="forget-password-button" onClick={logoutACB}>
+        Logout
+      </button>
+      <button class="forget-password-button" onClick={signupACB}>
+        Signup
+      </button>
+      <button class="forget-password-button" onClick={resetACB}>
+        Forget your Password
+      </button>
+      <br />
+      <button class="forget-password-button" onClick={googleACB}>
+        Login with Google
+      </button>
     </div>
   );
 

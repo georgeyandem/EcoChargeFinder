@@ -11,7 +11,7 @@
 
 <script>
 import leaflet from "leaflet";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import mapMarkerRed from "../assets/map-marker-red.svg";
 import ErrorModal from "./ErrorModal.vue";
 export default {
@@ -42,6 +42,15 @@ export default {
     }
 
     onMounted(mapACB);
+
+    onUnmounted(() => {
+      if (marker.value) {
+        marker.value.removeFrom(map);
+      }
+      // Remove the map and any listeners when leaving the component
+      map.remove(); // Remove the map from the DOM
+      // Other cleanup tasks if needed
+    });
 
     // Method to update coordinates
 

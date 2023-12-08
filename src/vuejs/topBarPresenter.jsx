@@ -1,22 +1,5 @@
-import TopbarView from "../views/sidebarView.jsx";
+import Topbar from "../views/topbarView.jsx";
 
-export default
-function Sidebar(props) {
-    function numberChangeACB(number) {
-        props.model.setNumberOfGuests(number);
-    }
-
-    function dishLinkClickACB(dish) {
-        props.model.setCurrentDish(dish.id);
-    }
-
-    function removeDishACB(dish) {
-        props.model.removeFromMenu(dish);
-    }
-
-    return (<TopbarView number={props.model.numberOfGuests} 
-                         dishes={props.model.dishes}
-                         onNumberChange={numberChangeACB}
-                         onDishLinkClick={dishLinkClickACB}
-                         onRemoveDish={removeDishACB}/>);
+export default function Search(props) {
+  return <Topbar text={"Type Location!"} />;
 }
