@@ -1,7 +1,7 @@
-import SidebarView from "../views/sidebarView.jsx";
+import TopbarView from "../views/sidebarView.jsx";
 
 export default
-function Sidebar(props) { /*
+function Sidebar(props) {
     function numberChangeACB(number) {
         props.model.setNumberOfGuests(number);
     }
@@ -14,9 +14,9 @@ function Sidebar(props) { /*
         props.model.removeFromMenu(dish);
     }
 
-    return (<SidebarView number={props.model.numberOfGuests} 
+    return (<TopbarView number={props.model.numberOfGuests} 
                          dishes={props.model.dishes}
                          onNumberChange={numberChangeACB}
                          onDishLinkClick={dishLinkClickACB}
-                         onRemoveDish={removeDishACB}/>); */
+                         onRemoveDish={removeDishACB}/>);
 }
