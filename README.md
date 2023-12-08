@@ -1,57 +1,110 @@
-onfigured to handle navigation between different sections of the application.
+# EcoChargeFinder
 
-## Firebase Integration (Commented Out)
+The EcoChargeFinder is a website that enables users to effortlessly locate electric vehicle (EV) charging stations on a global scale. It is a web application designed to help users locate charging stations for electric vehicles in various cities. The application provides information about the number of charging stations, their locations, and additional details to assist electric vehicle users in finding suitable charging points.
 
-**FirebaseModel.js:**  
-- Commented out, but may indicate future plans for integrating with Firebase for data storage and retrieval.
+Here is a file overview of the files that has been created: 
 
-## Views and User Interface
+## Files Overview
 
-**AboutView.jsx, DetailsView.jsx, HomeView.jsx, SearchResultsView.jsx, TopbarView.jsx:**  
-- Each view handles the presentation and user interaction for specific sections of the application.
-- Includes buttons, input fields, and information display.
+### Components
 
-## Loading Indicators
+### VueRoot.jsx
+The root component that sets up the Vue Router and renders the main content based on the current route.
 
-**Loading.gif:**  
-- Loading indicators inform users about ongoing asynchronous operations.
+### Search.jsx
+Presenter component for the search feature, allowing users to type a location and initiate a search.
 
-## Styling
+### Home.jsx
+Presenter component for the home page, displaying information about the number of chargers and providing buttons to navigate to other sections.
 
-**Style.css:**  
-- Some styling is applied to the views for visual appeal.
+### About.jsx
+Presenter component for the about page, providing information about the app and a button to navigate back to the home page.
 
-## Next Steps
+### Views
 
-### DetailsPresenter.jsx:
+#### `AboutView.jsx`
+- Description: Provides information about how the app works and a contact section.
+- Features:
+  - Description about how the app works.
+  - Contact information.
+  - Back to Home Page button.
 
-- Handles the presentation of detailed information, possibly related to charging stations.
-- Provides functionality for adding items to a menu.
+#### `DetailsView.jsx`
+- Description: Displays details about a specific dish, including an image, price, ingredients, and instructions.
+- Features:
+  - Add to Menu button.
+  - Cancel button.
+  - More information link.
 
-### Interaction with Google Maps Vue Component (Not Explicitly Shown):
+#### `HomeView.jsx`
+- Description: The home page view displaying buttons for navigation and information about charging stations.
+- Features:
+  - About us button.
+  - Find a charger button.
+  - Display information about charging stations.
 
-- Mentioned in the project description, implying integration with the Google Maps Vue component for a user-friendly interface.
+#### `SearchView.jsx`
+- Description: Allows users to perform a search for charging stations.
+- Features:
+  - About us button.
+  - Back to Home button.
+  - Search input and button.
 
-## Potential Future Features
+#### `TopbarView.jsx`
+- Description: Represents the top bar of the application.
+- Features:
+  - Navigation buttons.
+  - Number of chargers information.
 
-- Aspects such as search functionality, fetching charger data, and dynamic updating of the UI based on model changes suggest ongoing development.
+### Presenters
 
-## Getting Started:
+#### `AboutPresenter.jsx`
+- Description: Presenter for the AboutView.
+- Features: No additional logic, simply renders the AboutView.
 
-## Project Setup
+#### `DetailsPresenter.jsx`
+- Description: Presenter for the DetailsView.
+- Features:
+  - Add to Menu button functionality.
 
-```sh
-npm install
-```
+#### `HomePresenter.jsx`
+- Description: Presenter for the HomeView.
+- Features: No additional logic, simply renders the HomeView.
 
-### Compile and Hot-Reload for Development
+#### `SearchPresenter.jsx`
+- Description: Presenter for the SearchView.
+- Features: No additional logic, simply renders the SearchView.
 
-```sh
-npm run dev
-```
+#### `SidebarPresenter.jsx`
+- Description: Presenter for the TopbarView.
+- Features:
+  - Number of guests change functionality.
+  - Dish link click functionality.
+  - Remove dish functionality.
 
-### Compile and Minify for Production
+### Model
 
-```sh
-npm run build
-```
+#### `EvModel.js`
+- Description: Application state model containing data related to user input, search parameters, search results, and chargers.
+
+#### `EvSource.js`
+- Description: Handles API requests for searching charging stations.
+
+#### `resolvePromise.js`
+- Description: Utility function to handle promises and update promise state.
+
+## What Still Needs to Be Done
+While the current implementation provides a functional foundation, there are several areas that may benefit from further development:
+* TopbarView: The top bar component is currently a placeholder. Depending on the project requirements, additional navigation or information features could be implemented here. 
+* DetailsPresenter and DetailsView: If the application involves more detailed information about charging stations, these components may need enhancements to display and handle additional data. 
+* Styles and UI Improvements: Enhance the overall user experience by adding styles and UI improvements to make the application more visually appealing and user-friendly. 
+* Testing: Implement unit tests and integration tests to ensure the reliability and robustness of the application. 
+* Documentation: Provide comprehensive documentation for developers, including setup instructions, code structure, and any additional features. 
+
+## Usage
+
+1. Clone the repository.
+2. Install dependencies (if any).
+3. Run the application.
+
+Enjoy using EcoChargeFinder to find electric vehicle charging stations easily!
