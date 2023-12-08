@@ -1,25 +1,29 @@
-//import resolvePromise from "./resolvePromise";
-//import searchHotelsByLocation from "./hotelSource";
+import resolvePromise from "./resolvePromise.js";
+import searchMap from "../src/evSource.js";
 
 export default {
-  numberOfCharger: 2,
-  chargers: [{id:"1" , location:"Stockholm" , street:"kth-street"}], // this is only temporary, until API is fixed
+  password: "",
+  email: "",
+  text: "",
   searchParams: {},
-  currentEvPromiseState:{},
-  searchResultsPromiseState:{},
-}
+  searchResultsPromiseState: {},
+  chargers: [],
 
-  /*setSearchQuery(query) {
-    this.searchParams.query = query;
+  setPassword(newPass) {
+    this.password = newPass;
   },
 
-  //set search type "checkin, checkout"
-  setSearchType(type) {
-    this.searchParams.type = type;
+  setEmail(newEmail) {
+    this.email = newEmail;
   },
-  // searching
+
+  setSearch(location) {
+    this.searchParams.location = location;
+    //this.searchParams.type = type;
+  },
+
   doSearch(searchParams) {
-    const searchPromise = searchHotelsByLocation(searchParams);
+    const searchPromise = searchMap(searchParams.location);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
   },
-};*/
+};

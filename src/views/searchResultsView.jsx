@@ -1,31 +1,31 @@
-//import {sortIngredients} from "/src/utilities.js";
-//import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
+function SearchResultView(props) {
+  // check if there is result if not no need for the scroll
+  const showScrollbar = props.searchResults
+    ? "overflow-y-scroll"
+    : "overflow-y-hidden";
+  return (
+    <div class="absolute mt-14 w-full left-0 ">
+      <div class={`h-[200px] bg-white rounded-md ${showScrollbar}`}>
+        {props.searchResults.map(mapACB)}
+      </div>
+    </div>
+  );
 
-function SearchView(props){
+  function mapACB(results) {
+    function clickHandler(evt) {
+      console.log("wor"); // props.onClickDish(results)
+      //window.location.hash = "#/details";
+    }
 
-  function aboutACB(){
-    window.location.hash="#/about";
-  }
-  function homeACB(){
-    window.location.hash="#/"
-  }
-  function buttonClickACB(){
-    console.log("Search button works!");
-  }
-  
     return (
-        <div> 
-            <button onClick={aboutACB}>About us</button>
-            <button onClick={homeACB}>Back to Home</button>
-
-            <input 
-              type="text" 
-              value={props.text || ""}
-            />
-
-            <button onClick={buttonClickACB}>Search!</button>
-            <br />
-        </div>);
+      <div class="px-4 py-2 flex gap-x-2 cursor-pointer hover:bg-slate-600 hover:text-white">
+        <div key={results.id} onClick={clickHandler}>
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="text-xs">{results.display_name}</p>
+        </div>
+      </div>
+    );
+  }
 }
-export default SearchView;
 
+export default SearchResultView;
