@@ -79,7 +79,7 @@ Here is a file overview of the files that has been created:
 #### `resolvePromise.js`
 - Description: Utility function to handle promises and update promise state.
 
-What Still Needs to Be Done
+## What Still Needs to Be Done
 While the current implementation provides a functional foundation, there are several areas that may benefit from further development:
 * TopbarView: The top bar component is currently a placeholder. Depending on the project requirements, additional navigation or information features could be implemented here. 
 * DetailsPresenter and DetailsView: If the application involves more detailed information about charging stations, these components may need enhancements to display and handle additional data. 
