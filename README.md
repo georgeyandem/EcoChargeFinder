@@ -6,6 +6,20 @@ Here is a file overview of the files that has been created:
 
 ## Files Overview
 
+### Components
+
+### VueRoot.jsx
+The root component that sets up the Vue Router and renders the main content based on the current route.
+
+### Search.jsx
+Presenter component for the search feature, allowing users to type a location and initiate a search.
+
+### Home.jsx
+Presenter component for the home page, displaying information about the number of chargers and providing buttons to navigate to other sections.
+
+### About.jsx
+Presenter component for the about page, providing information about the app and a button to navigate back to the home page.
+
 ### Views
 
 #### `AboutView.jsx`
