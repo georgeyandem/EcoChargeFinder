@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "hotellfinder",
-    "ecochargefinder": "ecochargefinder"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "hotellfinder"
+  }
 }
