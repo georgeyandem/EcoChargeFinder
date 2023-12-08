@@ -1,6 +1,8 @@
 # EcoChargeFinder
 
-The EcoChargeFinder is a website that enables users to effortlessly locate electric vehicle (EV) charging stations on a global scale.
+The EcoChargeFinder is a website that enables users to effortlessly locate electric vehicle (EV) charging stations on a global scale. It is a web application designed to help users locate charging stations for electric vehicles in various cities. The application provides information about the number of charging stations, their locations, and additional details to assist electric vehicle users in finding suitable charging points.
+
+Here is a file overview of the files that has been created: 
 
 ## Files Overview
 
@@ -76,6 +78,14 @@ The EcoChargeFinder is a website that enables users to effortlessly locate elect
 
 #### `resolvePromise.js`
 - Description: Utility function to handle promises and update promise state.
+
+What Still Needs to Be Done
+While the current implementation provides a functional foundation, there are several areas that may benefit from further development:
+* TopbarView: The top bar component is currently a placeholder. Depending on the project requirements, additional navigation or information features could be implemented here. 
+* DetailsPresenter and DetailsView: If the application involves more detailed information about charging stations, these components may need enhancements to display and handle additional data. 
+* Styles and UI Improvements: Enhance the overall user experience by adding styles and UI improvements to make the application more visually appealing and user-friendly. 
+* Testing: Implement unit tests and integration tests to ensure the reliability and robustness of the application. 
+* Documentation: Provide comprehensive documentation for developers, including setup instructions, code structure, and any additional features. 
 
 ## Usage
 
