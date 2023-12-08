@@ -5,6 +5,7 @@ import Map from "/src/components/map.vue";
 import SearchView from "../vuejs/searchPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
+import SearchResultView from "../views/searchResultView.jsx";
 
 export function VueRoot(props) {
   //makeRouter
@@ -25,7 +26,7 @@ export function VueRoot(props) {
         </div>
         <div class="w-full md:w-auto absolute md:top-[120px] md:left-[60px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent">
           <div>
-            <SearchView models={props.model} />
+            <SearchView model={props.model} />
           </div>
         </div>
         <div>

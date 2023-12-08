@@ -8,7 +8,6 @@ function SearchView(props) {
         class="pl-9 pr-4 py-3 text-sm focus:outline-blue w-full shado-md rounded-md"
         placeholder="Search"
         onChange={textInputChange}
-        value={props.text || ""}
       />
 
       <div

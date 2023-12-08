@@ -17,12 +17,12 @@ export default {
   },
 
   setSearch(location) {
-    this.text = location;
+    this.searchParams.location = location;
     //this.searchParams.type = type;
   },
 
   doSearch(searchParams) {
-    const searchPromise = searchMap(searchParams.type);
+    const searchPromise = searchMap(searchParams.location);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
   },
 };
