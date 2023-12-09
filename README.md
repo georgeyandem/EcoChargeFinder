@@ -2,6 +2,8 @@
 
 The EcoChargeFinder is a website that enables users to effortlessly locate electric vehicle (EV) charging stations on a global scale. It is a web application designed to help users locate charging stations for electric vehicles in various cities. The application provides information about the number of charging stations, their locations, and additional details to assist electric vehicle users in finding suitable charging points.
 
+The website prioritizes mobile accessibility, ensuring a smooth and user-friendly experience for all visitors, including those using mobile phones. Users, regardless of their device, can seamlessly locate nearby charging stations, and simplifying their search for charging points. 
+
 Here is a file overview of the files that has been created: 
 
 ## Files Overview
