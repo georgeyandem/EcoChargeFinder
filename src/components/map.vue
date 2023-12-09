@@ -48,7 +48,7 @@ export default {
         map.remove(); // Remove the map instance
       }
       if (locationWatcher) {
-        locationWatcher(); // Clear the location watcher if it exists
+        navigator.geolocation.clearWatch(locationWatcher);
       }
       // Reset or clear reactive properties and variables
       fetchCoords.value = null;
@@ -95,8 +95,15 @@ export default {
       // if there is an error
       console.log(err);
       fetchCoords.value = null;
-      geoError.value = true;
-      geoErrorMsg.value = err.message;
+      if (err.code === 1) {
+        // User denied Geolocation
+        geoError.value = true;
+        geoErrorMsg.value = "User denied Geolocation";
+      } else {
+        // Other geolocation errors
+        geoError.value = true;
+        geoErrorMsg.value = err.message;
+      }
     }
 
     function closeError() {

@@ -14,7 +14,11 @@ function TopbarView(props) {
     console.log("Search button works!");
   }
 
-  function mobileACB() {}
+  // for the mobile
+  function mobileACB() {
+    const navbar = document.getElementById("navbar-solid-bg");
+    navbar.classList.toggle("hidden"); // Toggle the 'hidden' class on click
+  }
 
   return (
     <div>
