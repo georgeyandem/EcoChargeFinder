@@ -37,8 +37,7 @@ export default function Summary(props) {
 
   return (
     <div>
-      <Map />
-      <div class="w-full md:w-auto absolute md:top-[120px] md:left-[60px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent">
+      <div class="w-full md:w-auto absolute md:top-[120px] md:left-[70px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent sm:top-[120px]">
         <SearchView
           //searchResults={searchACB}
           onTextChange={SearchTextACB}
@@ -47,6 +46,7 @@ export default function Summary(props) {
         />
         {logicfunction(props.model.searchResultsPromiseState)}
       </div>
+      <Map />
     </div>
   );
 }
