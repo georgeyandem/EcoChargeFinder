@@ -1,9 +1,9 @@
 //import {sortIngredients} from "/src/utilities.js";
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
-
+import "../assets/style.css";
 function SearchView(props) {
   return (
-    <div class="relative flex-1 md:min-w-[350px]">
+    <div class="relative flex-1 md:min-w-[350px]" id="search">
       <input
         class="pl-9 pr-4 py-3 text-sm focus:outline-blue w-full shado-md rounded-md"
         placeholder="Search"
