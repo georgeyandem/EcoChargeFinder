@@ -2,10 +2,9 @@
 //import Search from "./searchPresenter.jsx";
 import Home from "./homePresenter.jsx";
 import About from "./aboutPresenter.jsx";
-import Search from "./searchPresenter.jsx";
-import Map from "/src/components/map.vue";
 import Login from "./loginPresenter.jsx";
 import TopbarView from "./topBarPresenter.jsx";
+import MapWithSearch from "./mapWithSearchPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 
@@ -23,14 +22,7 @@ export function makeRouter(model) {
       },
       {
         path: "/search",
-        component: (
-          <div>
-            <div class="w-full md:w-auto absolute md:top-[120px] md:left-[60px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent">
-              <Search model={model} />
-            </div>
-            <Map model={model} />
-          </div>
-        ),
+        component: <MapWithSearch model={model} />,
       },
       {
         path: "/login",
@@ -50,8 +42,7 @@ export function VueRoot(props) {
           <TopbarView model={props.model} />
         </div>
         <div class="main_content">
-          {" "}
-          <RouterView />{" "}
+          <RouterView />
         </div>
       </div>
     );

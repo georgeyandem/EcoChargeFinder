@@ -1,6 +1,6 @@
 import SearchView from "../views/searchView.jsx";
 import SearchResultView from "../views/searchResultsView.jsx";
-
+import Map from "../components/map.vue";
 export default function Summary(props) {
   function logicfunction(state) {
     if (!state.promise) {
@@ -37,13 +37,16 @@ export default function Summary(props) {
 
   return (
     <div>
-      <SearchView
-        //searchResults={searchACB}
-        onTextChange={SearchTextACB}
-        onButtonClick={searchACB}
-        //onSelectChange={SearchTextACB}
-      />
-      {logicfunction(props.model.searchResultsPromiseState)}
+      <Map />
+      <div class="w-full md:w-auto absolute md:top-[120px] md:left-[60px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent">
+        <SearchView
+          //searchResults={searchACB}
+          onTextChange={SearchTextACB}
+          onButtonClick={searchACB}
+          //onSelectChange={SearchTextACB}
+        />
+        {logicfunction(props.model.searchResultsPromiseState)}
+      </div>
     </div>
   );
 }

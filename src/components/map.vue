@@ -11,7 +11,7 @@
 
 <script>
 import leaflet from "leaflet";
-import { onMounted, onBeforeUnmount, ref } from "vue";
+import { onMounted, onBeforeUnmount, ref, onUnmounted } from "vue";
 import mapMarkerRed from "../assets/map-marker-red.svg";
 import ErrorModal from "./ErrorModal.vue";
 export default {
@@ -24,10 +24,10 @@ export default {
     const marker = ref(null);
     const geoError = ref(null);
     const geoErrorMsg = ref(null);
-
+    let locationWatcher; // Store the location watcher to clear it later
     function mapACB() {
       // init map
-      map = leaflet.map("map").setView([28.538336, -81.379234], 10);
+      map = leaflet.map("map").setView([59.3293, 18.0686], 10);
 
       // add tile layer
       leaflet
@@ -43,9 +43,18 @@ export default {
 
     onMounted(mapACB);
     onBeforeUnmount(() => {
-      map.remove();
+      if (map) {
+        map.off(); // Remove any event listeners from the map
+        map.remove(); // Remove the map instance
+      }
+      if (locationWatcher) {
+        locationWatcher(); // Clear the location watcher if it exists
+      }
+      // Reset or clear reactive properties and variables
+      fetchCoords.value = null;
+      geoError.value = null;
+      geoErrorMsg.value = null;
     });
-
     // Method to update coordinates
 
     function getLocation() {
@@ -56,8 +65,11 @@ export default {
         return;
       }
       fetchCoords.value = true;
-      // user coords
-      navigator.geolocation.getCurrentPosition(setCoords, getError);
+      // Watch for location and handle callbacks accordingly
+      locationWatcher = navigator.geolocation.watchPosition(
+        setCoords,
+        getError
+      );
     }
 
     function setCoords(pos) {
