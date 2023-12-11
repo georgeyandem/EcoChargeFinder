@@ -8,21 +8,18 @@ Here is a file overview of the files that has been created:
 
 ## Files Overview
 
-### Components
+### Components:
 
-### VueRoot.jsx
+#### VueRoot.jsx
 The root component that sets up the Vue Router and renders the main content based on the current route.
 
-### Search.jsx
-Presenter component for the search feature, allowing users to type a location and initiate a search.
+#### map.vue
+the map thrid party component that redering a map using Leaflet library.
 
-### Home.jsx
-Presenter component for the home page, displaying information about the number of chargers and providing buttons to navigate to other sections.
+#### ErrorModal.vue 
+This component is responsible for displaying an error message when the user denies access to location services in the browser.Denying access prevents the display of the current user position on the map.
 
-### About.jsx
-Presenter component for the about page, providing information about the app and a button to navigate back to the home page.
-
-### Views
+### Views:
 
 #### `AboutView.jsx`
 - Description: Provides information about how the app works and a contact section.
@@ -54,7 +51,7 @@ Presenter component for the about page, providing information about the app and 
 - Features:
   - Navigation buttons.
 
-### Presenters
+### Presenters:
 
 #### `AboutPresenter.jsx`
 - Description: Presenter for the AboutView.
@@ -102,7 +99,31 @@ While the current implementation provides a functional foundation, there are sev
 ## Usage
 
 1. Clone the repository.
-2. Install dependencies (if any).
-3. Run the application.
+3. Install dependencies (if any).
+  npm install
+5. Run the application.
+  npm run dev
+
+## Requriments
+
+-apiConfig.js:
+in the apiConfig.js file
+```javascript
+const BASE_URL = "https://nominatim.openstreetmap.org/"; // the DH2642 proxy server
+const API_KEY = "tour_api_key"; // exempel mapquest https://developer.mapquest.com/documentation/
+
+export { BASE_URL, API_KEY };
+```
+> [!NOTE]
+To make sure the app work correctly the api configuration must be set up in a new file named apiConfig.js and have the a code above in the file. 
+
+> [!TIP]
+> you can get free Api-key from mapquest [here](https://developer.mapquest.com/documentation/).
+
+-firebaseConfig.js:
+The firebaseConfig.js file is necessary for hosting and authentication purposes.
+Obtain the Firebase configuration from the Firebase website.
+Ensure these configurations are correctly set up for the app to function as intended.
+
 
 Enjoy using EcoChargeFinder to find electric vehicle charging stations easily!
