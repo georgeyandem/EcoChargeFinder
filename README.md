@@ -99,12 +99,25 @@ While the current implementation provides a functional foundation, there are sev
 ## Usage
 
 1. Clone the repository.
+```bash
+  git clone https://gits-15.sys.kth.se/alayoubi/EcoChargeFinder.git
+```
+2. Navigate to the project directory:
+```bash
+    cd EcoChargeFinder
+```
 3. Install dependencies (if any).
+```bash
   npm install
-5. Run the application.
+```
+4. Run the application.
+```bash
   npm run dev
-
+```
 ## Requriments
+
+-Node.js
+Make sure Node.js is installed. you can download it from [here](https://nodejs.org/en).
 
 -apiConfig.js:
 in the apiConfig.js file
@@ -125,5 +138,7 @@ The firebaseConfig.js file is necessary for hosting and authentication purposes.
 Obtain the Firebase configuration from the Firebase website.
 Ensure these configurations are correctly set up for the app to function as intended.
 
+> [!IMPORTANT]
+> Make sure the files named correctly "the config files doesnt start with caps".
 
 Enjoy using EcoChargeFinder to find electric vehicle charging stations easily!
