@@ -128,7 +128,7 @@ const API_KEY = "tour_api_key"; // exempel mapquest https://developer.mapquest.c
 export { BASE_URL, API_KEY };
 ```
 > [!NOTE]
-To make sure the app work correctly the api configuration must be set up in a new file named apiConfig.js and have the a code above in the file. 
+> To make sure the app work correctly the api configuration must be set up in a new file named apiConfig.js and have the a code above in the file. 
 
 > [!TIP]
 > you can get free Api-key from mapquest [here](https://developer.mapquest.com/documentation/).
