@@ -104,7 +104,7 @@ While the current implementation provides a functional foundation, there are sev
 ```
 2. Navigate to the project directory:
 ```bash
-    cd EcoChargeFinder
+  cd EcoChargeFinder
 ```
 3. Install dependencies (if any).
 ```bash
