@@ -127,18 +127,19 @@ const API_KEY = "tour_api_key"; // exempel mapquest https://developer.mapquest.c
 
 export { BASE_URL, API_KEY };
 ```
-[!NOTE]
-(To make sure the app work correctly the api configuration must be set up in a new file named apiConfig.js and have the a code above in the file.) 
+> **NOTE**
+> To make sure the app work correctly the api configuration must be set up in a new file named apiConfig.js and have the a code above in the file.) 
 
-> [!TIP]
-> you can get free Api-key from mapquest [here](https://developer.mapquest.com/documentation/).
+
+> **TIP**
+> You can get free Api-key from mapquest [here](https://developer.mapquest.com/documentation/).
 
 -firebaseConfig.js:
 The firebaseConfig.js file is necessary for hosting and authentication purposes.
 Obtain the Firebase configuration from the Firebase website.
 Ensure these configurations are correctly set up for the app to function as intended.
 
-> [!IMPORTANT]
+> **IMPORTANT**
 > Make sure the files named correctly "the config files doesnt start with caps".
 
 Enjoy using EcoChargeFinder to find electric vehicle charging stations easily!
