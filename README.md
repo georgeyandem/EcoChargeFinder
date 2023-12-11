@@ -29,12 +29,10 @@ Presenter component for the about page, providing information about the app and 
 - Features:
   - Description about how the app works.
   - Contact information.
-  - Back to Home Page button.
 
 #### `DetailsView.jsx`
-- Description: Displays details about a specific dish, including an image, price, ingredients, and instructions.
+- Description: Displays details about a specific charge station, including an image, price, ingredients, and instructions.
 - Features:
-  - Add to Menu button.
   - Cancel button.
   - More information link.
 
@@ -47,16 +45,14 @@ Presenter component for the about page, providing information about the app and 
 
 #### `SearchView.jsx`
 - Description: Allows users to perform a search for charging stations.
-- Features:
-  - About us button.
-  - Back to Home button.
-  - Search input and button.
+
+#### `SearchResultsView.jsx`
+- Description: Allows user to see the searchResults for charging stations.
 
 #### `TopbarView.jsx`
 - Description: Represents the top bar of the application.
 - Features:
   - Navigation buttons.
-  - Number of chargers information.
 
 ### Presenters
 
@@ -66,23 +62,23 @@ Presenter component for the about page, providing information about the app and 
 
 #### `DetailsPresenter.jsx`
 - Description: Presenter for the DetailsView.
-- Features:
-  - Add to Menu button functionality.
+- Features:No additional logic, simply renders the DetailsView.
+
 
 #### `HomePresenter.jsx`
 - Description: Presenter for the HomeView.
 - Features: No additional logic, simply renders the HomeView.
 
-#### `SearchPresenter.jsx`
-- Description: Presenter for the SearchView.
+#### `MapWithSearchPresenter.jsx`
+- Description: Presenter for the Search, Search Results and the map.
 - Features: No additional logic, simply renders the SearchView.
+  -Features:
+    - Reads user input from the search bar.
+    - Provides search results upon clicking the search icon or  pressing Enter.
 
-#### `SidebarPresenter.jsx`
-- Description: Presenter for the TopbarView.
-- Features:
-  - Number of guests change functionality.
-  - Dish link click functionality.
-  - Remove dish functionality.
+#### `TopBarPresenter.jsx`
+- Description: Presenter for the navbar, Search Results and the map.
+  - Features:No additional logic, simply renders the topBarView.
 
 ### Model
 
