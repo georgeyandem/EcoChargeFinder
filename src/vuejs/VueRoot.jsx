@@ -7,6 +7,7 @@ import TopbarView from "./topBarPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
+import NotFound from "../components/NotFound.vue";
 
 export function makeRouter(model) {
   return createRouter({
@@ -28,11 +29,11 @@ export function makeRouter(model) {
         path: "/login",
         component: <Login model={model} />,
       },
-      // {
-      //   path: "/:catchAll(.*)",
-      //   name: "NotFound",
-      //   component: NotFound
-      // }
+      {
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        component: <NotFound />,
+      },
     ],
   });
 }
