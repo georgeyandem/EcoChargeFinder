@@ -28,11 +28,11 @@ export function makeRouter(model) {
         path: "/login",
         component: <Login model={model} />,
       },
-      {
-        path: "/:catchAll(.*)",
-        name: "NotFound",
-        component: NotFound
-      }
+      // {
+      //   path: "/:catchAll(.*)",
+      //   name: "NotFound",
+      //   component: NotFound
+      // }
     ],
   });
 }
