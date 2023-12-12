@@ -28,7 +28,8 @@ export default function Summary(props) {
     logout();
   }
   function signupACB() {
-    signup(props.model.email, props.model.password);
+    // signup(props.model.email, props.model.password);
+    window.location.hash = "#/signup";
   }
   function resetACB() {
     password_reset(props.model.email);
