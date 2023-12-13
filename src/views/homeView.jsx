@@ -19,13 +19,13 @@ function HomeView(props) {
   }
 
   return (
-    <div class="text-center">
+    <div>
       <img
         class="rounded-full w-96 h-96 mx-auto"
         src="/homeimage.jpg"
         alt="image description"
       ></img>
-      <div class="mt-4">
+      {/* <div class="mt-4">
         <button class="forget-password-button" onClick={aboutACB}>
           About us
         </button>
@@ -35,7 +35,7 @@ function HomeView(props) {
         <div>{[...props.info].map(getinfoCB)}</div>
         <br />
         Number of chargers: {props.number}
-      </div>
+      </div> */}
     </div>
   );
 }
