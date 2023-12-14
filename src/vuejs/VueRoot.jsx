@@ -3,6 +3,7 @@
 import Home from "./homePresenter.jsx";
 import About from "./aboutPresenter.jsx";
 import Login from "./loginPresenter.jsx";
+import SignupView from "./signupPresenter.jsx";
 import TopbarView from "./topBarPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
 
@@ -28,6 +29,10 @@ export function makeRouter(model) {
       {
         path: "/login",
         component: <Login model={model} />,
+      },
+      {
+        path: "/signup",
+        component: <SignupView model={model}/>,
       },
       {
         path: "/:catchAll(.*)",
