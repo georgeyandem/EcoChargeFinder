@@ -29,6 +29,7 @@ function HomeView(props) {
         <button class="forget-password-button" onClick={aboutACB}>
           About us
         </button>
+        <br></br>
         <button class="forget-password-button" onClick={findChargerACB}>
           find a charger
         </button>
