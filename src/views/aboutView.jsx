@@ -5,14 +5,19 @@ function AboutView(props) {
   }
   return (
     <div>
-      * Description about how the app work
+      <button onClick={() => { /* handle click for "Description about how the app works" */ }}>
+        Description about how the app works
+      </button>
       <br />
-      * Contact us
+      <button onClick={() => { /* handle click for "Contact us" */ }}>
+        Contact us
+      </button>
       <br />
       <br />
-      <img src="/EcoChargeFinder_icon.png" />
-      <button onClick={backToHomeACB}>Back to Home Page </button>
+      <img src="/EcoChargeFinder_icon.png" alt="App Icon" />
+      <button onClick={backToHomeACB}>Back to Home Page</button>
     </div>
   );
 }
+
 export default AboutView;
