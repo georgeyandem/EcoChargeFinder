@@ -7,7 +7,7 @@ function AboutView(props) {
     <div>
       * Description about how the app work
       <br />
-      * Contact us.
+      * Contact us
       <br />
       <br />
       <img src="/EcoChargeFinder_icon.png" />
