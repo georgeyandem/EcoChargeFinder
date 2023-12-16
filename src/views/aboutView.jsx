@@ -7,7 +7,9 @@ function AboutView(props) {
     <div>
       * Description about how the app work
       <br />
-      * Contact us
+      <button onClick = { () => /* handle click for "Contact us" */}> 
+        Contact us
+      </button>
       <br />
       <br />
       <img src="/EcoChargeFinder_icon.png" />
