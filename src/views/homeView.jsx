@@ -31,7 +31,7 @@ function HomeView(props) {
         </button>
         <br></br>
         <button class="forget-password-button" onClick={findChargerACB}>
-          find a charger
+          Find a charger
         </button>
         <div>{[...props.info].map(getinfoCB)}</div>
         <br />
