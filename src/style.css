@@ -1,49 +1,83 @@
-
 /* Topbar styling */
 nav {
-    padding: 1rem;
-  }
-  
-  /* Logo styling */
-  nav img {
-    height: 2rem; 
-    margin-right: 0.5rem;
-  }
-  
-  nav span {
-    font-size: 1.5rem; 
-  }
-  
-  /* Toggle button styling */
-  button {
-    background-color: #1d4c83; 
-    color: #fff; 
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-  
-  /* Navigation links styling */
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  li {
-    margin-right: 1rem;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #333; 
-    font-weight: bold;
-    transition: color 0.3s ease; /* Gör övergångseffekten mjukare */
-  }
-  
-  a:hover {
-    color: #4a90e2; 
-  }
-  
+  padding: 1rem;
+}
+
+/* Logo styling */
+nav img {
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+
+nav span {
+  font-size: 1.5rem;
+}
+
+/* Toggle button styling */
+button {
+  background-color: #831d25;
+  color: #fff;
+  border: none;
+  margin-bottom: 10px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* Navigation links styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e24a4a;
+}
+
+/* Add extra spacing between form fields */
+.input-container {
+  margin-bottom: 10px;
+}
+
+/* Styles for form fields */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Styles for password field */
+.password-field {
+  margin-bottom: 15px;
+}
+
+/* Styles for form labels */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Styles for buttons */
+button {
+  background-color: #831d25;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}

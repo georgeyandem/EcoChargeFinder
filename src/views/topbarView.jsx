@@ -1,7 +1,7 @@
 //import "/src/style.css"
 //import {sortIngredients} from "/src/utilities.js";
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
-import "../assets/style.css";
+import "/src/style.css";
 
 function TopbarView(props) {
   function aboutACB() {
