@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #680606;
+  --text-color: #333;
+  --hover-color: #8d1010;
+}
+
 /* Topbar styling */
 nav {
   padding: 1rem;
@@ -5,7 +11,7 @@ nav {
 
 /* Logo styling */
 nav img {
-  height: 2rem;
+  height: 5rem;
   margin-right: 0.5rem;
 }
 
@@ -15,7 +21,7 @@ nav span {
 
 /* Toggle button styling */
 button {
-  background-color: #831d25;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   margin-bottom: 10px;
@@ -38,13 +44,13 @@ li {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #e24a4a;
+  color: var(--hover-color);
 }
 
 /* Add extra spacing between form fields */
@@ -55,7 +61,7 @@ a:hover {
 /* Styles for form fields */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   margin-top: 5px;
   margin-bottom: 10px;
 }
@@ -74,7 +80,7 @@ label {
 
 /* Styles for buttons */
 button {
-  background-color: #831d25;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
