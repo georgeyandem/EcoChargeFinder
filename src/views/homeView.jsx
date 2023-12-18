@@ -1,5 +1,6 @@
 //import {sortIngredients} from "/src/utilities.js";
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
+import "/src/style.css";
 
 function HomeView(props) {
   function aboutACB() {

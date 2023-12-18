@@ -1,3 +1,4 @@
+import "/src/style.css";
 function SignupView(props){
     return (
     <section class="bg-gray-50 dark:bg-gray-900">

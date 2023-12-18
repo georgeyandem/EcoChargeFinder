@@ -1,4 +1,4 @@
-//import "/src/style.css";
+import "/src/style.css";
 function AboutView(props) {
   function backToHomeACB() {
     window.location.hash = "#/";

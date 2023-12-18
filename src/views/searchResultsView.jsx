@@ -1,3 +1,5 @@
+import "/src/style.css";
+
 function SearchResultView(props) {
   // check if there is result if not no need for the scroll
   const showScrollbar = props.searchResults

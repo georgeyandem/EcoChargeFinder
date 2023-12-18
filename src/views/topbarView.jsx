@@ -2,7 +2,6 @@
 //import {sortIngredients} from "/src/utilities.js";
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
 import "/src/style.css";
-
 function TopbarView(props) {
   function aboutACB() {
     window.location.hash = "#/about";

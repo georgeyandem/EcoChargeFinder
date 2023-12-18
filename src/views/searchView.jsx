@@ -1,6 +1,5 @@
-//import {sortIngredients} from "/src/utilities.js";
-//import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
-import "../assets/style.css";
+
+import "/src/style.css";
 function SearchView(props) {
   return (
     <div class="relative flex-1 md:min-w-[350px]" id="search">
