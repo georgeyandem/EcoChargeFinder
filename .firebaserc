@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "EcoChargeFinder",
+    "default": "ecochargefinder",
     "ecochargefinder": "ecochargefinder"
   },
   "targets": {},
