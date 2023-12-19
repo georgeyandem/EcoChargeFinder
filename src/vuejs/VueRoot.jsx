@@ -29,6 +29,10 @@ export function makeRouter(model) {
         component: <MapWithSearch model={model} />,
       },
       {
+        path: "/details/", 
+        component: <Details model={model} />, 
+      },
+      {
         path: "/login",
         component: <Login model={model} />,
       },
