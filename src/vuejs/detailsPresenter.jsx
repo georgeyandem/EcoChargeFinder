@@ -1,5 +1,4 @@
 import DetailsView from "../views/detailsView.jsx";
-
 export default function Details(props) {
     const state_data    = props.model.currentDishPromiseState.data;
     const state_promise = props.model.currentDishPromiseState.promise;

@@ -6,6 +6,8 @@ import Login from "./loginPresenter.jsx";
 import SignupView from "./signupPresenter.jsx";
 import TopbarView from "./topBarPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
+import Details from "./detailsPresenter.jsx"; 
+
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
