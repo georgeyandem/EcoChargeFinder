@@ -33,7 +33,6 @@ async function fetchMapInfo(apiEndpoint) {
       // Anropa fetchMapInfoData när komponenten är monterad
       onMounted(fetchMapInfoData);
   
-      // Returnera de relevanta värden och metoder för att användas i templatedelen
       return {
         mapInfo,
       };
