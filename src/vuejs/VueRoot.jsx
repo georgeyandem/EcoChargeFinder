@@ -7,10 +7,13 @@ import SignupView from "./signupPresenter.jsx";
 import TopbarView from "./topBarPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
 import Details from "./detailsPresenter.jsx"; 
+import ContactView from "/src/views/contactView.jsx";
+import DescriptionView from "/src/views/descriptionView.jsx";
 
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
+import descriptionView from "../views/descriptionView.jsx";
 
 export function makeRouter(model) {
   return createRouter({
@@ -39,6 +42,14 @@ export function makeRouter(model) {
       {
         path: "/signup",
         component: <SignupView model={model}/>,
+      },
+      {
+        path: "/contact",
+        component: ContactView,
+      },
+      {
+        path: "/description",
+        component: DescriptionView,
       },
       {
         path: "/:catchAll(.*)",
