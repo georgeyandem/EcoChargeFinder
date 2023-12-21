@@ -1,44 +1,50 @@
 import DetailsView from "../views/detailsView.jsx";
+import { getUserId } from "../auth.js";
+import { useFavoritesStore } from "../stores/counter";
+import TopbarView from "./topBarPresenter.jsx";
 export default function Details(props) {
-    const state_data    = props.model.currentDishPromiseState.data;
-    const state_promise = props.model.currentDishPromiseState.promise;
-    const state_error   = props.model.currentDishPromiseState.error;
-    
-    function addButtonClickACB() {
-        if (state_data) {
-            props.model.addToMenu(state_data);
-        }
-    }
+  function userACB() {
+    const userFavorites = { favorite1: true, favorite2: true };
+    let user = null;
+    getUserId()
+      .then((userId) => {
+        user = userId;
+        console.log("User ID:", user);
+        saveFavorites(user, userFavorites);
+      })
+      .catch((error) => {
+        console.error("Error: user not logged in", error.message);
+      });
+  }
 
-    function searchCB(dish) {
-        return dish.id === props.model.currentDish;
-    }
+  function saveFavorites(userId, favorites) {
+    const favoritesStore = useFavoritesStore();
 
-    if (state_error) {
-        return (
-            <span>{state_error}</span>
-        );
-    }
+    return favoritesStore
+      .saveUserFavorites(userId, favorites)
+      .then(() => favoritesStore.fetchUserFavorites(userId))
+      .then((updatedFavorites) => {
+        console.log("Updated Favorites:", updatedFavorites);
+        return updatedFavorites; // Return the updated favorites
+      })
+      .catch((error) => {
+        console.error("Error saving favorites:", error);
+        throw error; // Throw the error to be caught by the caller if needed
+      });
+  }
+  /*
+  function fetchFavorites(userId) {
+    const favoritesStore = useFavoritesStore();
+    favoritesStore
+      .fetchUserFavorites(userId)
+      .then((favorites) => console.log("User Favorites:", favorites))
+      .catch((error) => console.error("Error:", error));
+  }*/
 
-    if (state_data && state_promise) {
-        return (
-            <DetailsView    dishData={state_data}
-                            guests={props.model.numberOfGuests}
-                            isDishInMenu={props.model.dishes.find(searchCB)}
-                            onAddButtonClick={addButtonClickACB}
-            />
-        );
-    }
-
-    if (state_promise && !state_data) {
-        return (
-            <img src="https://brfenergi.se/iprog/loading.gif"/>
-        );
-    }
-    
-    if (!state_promise) {
-        return (
-            <span>no data</span>
-        );
-    }    
+  return (
+    <div>
+      <TopbarView model={props.model} />
+      <DetailsView favoritebutton={userACB} />
+    </div>
+  );
 }

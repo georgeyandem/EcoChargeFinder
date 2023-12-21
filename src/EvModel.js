@@ -5,9 +5,14 @@ export default {
   password: "",
   email: "",
   text: "",
+  username: "",
+  imgUrl: "",
   searchParams: {},
   searchResultsPromiseState: {},
-  chargers: [],
+
+  setUsername(newUser) {
+    this.username = newUser;
+  },
 
   setPassword(newPass) {
     this.password = newPass;
@@ -16,10 +21,12 @@ export default {
   setEmail(newEmail) {
     this.email = newEmail;
   },
+  setPhotoURL(url) {
+    this.imgUrl = url;
+  },
 
   setSearch(location) {
     this.searchParams.location = location;
-    //this.searchParams.type = type;
   },
 
   doSearch(searchParams) {

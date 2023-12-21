@@ -3,11 +3,10 @@
 import Home from "./homePresenter.jsx";
 import About from "./aboutPresenter.jsx";
 import Login from "./loginPresenter.jsx";
-import SignupView from "./signupPresenter.jsx";
+import Signup from "./signupPresenter.jsx";
 import TopbarView from "./topBarPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
-import Details from "./detailsPresenter.jsx"; 
-
+import Details from "./detailsPresenter.jsx";
 
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
@@ -29,8 +28,8 @@ export function makeRouter(model) {
         component: <MapWithSearch model={model} />,
       },
       {
-        path: "/details/", 
-        component: <Details model={model} />, 
+        path: "/details/",
+        component: <Details model={model} />,
       },
       {
         path: "/login",
@@ -38,7 +37,7 @@ export function makeRouter(model) {
       },
       {
         path: "/signup",
-        component: <SignupView model={model}/>,
+        component: <Signup model={model} />,
       },
       {
         path: "/:catchAll(.*)",
@@ -55,9 +54,7 @@ export function VueRoot(props) {
     return (
       <div>
         {/*<div><Home model ={props.model}/></div>*/}
-        <div class="sidebar">
-          <TopbarView model={props.model} />
-        </div>
+        <div class="sidebar"></div>
         <div class="main_content">
           <RouterView />
         </div>

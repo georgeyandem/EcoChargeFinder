@@ -1,11 +1,11 @@
-/**import { getMenuDetails } from "./dishSource";
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "/src/teacherFirebase.js";
-import firebaseConfig from "/src/firebaseConfig.js";
+//import { getMenuDetails } from "./dishSource";
+//import { initializeApp } from "firebase/app";
+//import { getDatabase, ref, get, set } from "/src/teacherFirebase.js";
+//import firebaseConfig from "/src/firebaseConfig.js";
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const PATH = "dinnerModel91";
+//const app = initializeApp(firebaseConfig);
+//const db = getDatabase(app);
+//const PATH = "dinnerModel91";
 //set(ref(db, PATH + "/test"), "dummy");
 
 // Add relevant imports here
@@ -17,26 +17,25 @@ const PATH = "dinnerModel91";
 function modelToPersistence(model) {
   // TODO return an object
   return {
-    numberOfGuests: model.numberOfGuests,
-    currentDishid: model.currentDish,
-    dishesID: model.dishes.map(transformerCB).sort((a, b) => a - b),
+    id: model.id,
+    name: model.name,
+    address: model.address,
   };
-
-  function transformerCB(dish) {
-    return dish.id;
-  }
 }
 
-function persistenceToModel(data, model) {
-  model.numberOfGuests = data?.numberOfGuests || 2;
-  model.currentDish = data?.currentDishid || null;
-  // return a promise, so we can chain this
-  return getMenuDetails(data?.dishesID || []).then(saveToModel);
-  // TODO return a promise
+function persistenceToModel(bookmarksData, model) {
+  if (!bookmarksData) return;
 
-  function saveToModel(dishes) {
-    model.dishes = dishes;
-  }
+  // Assuming bookmarksData is an array of bookmark objects retrieved from Firestore
+  const bookmarks = bookmarksData.map((bookmark) => ({
+    id: bookmark.id,
+    name: bookmark.name,
+    address: bookmark.address,
+    // Add more properties as needed...
+  }));
+
+  // Assuming your model has a property named 'bookmarks'
+  model.bookmarks = bookmarks;
 }
 
 function saveToFirebase(model) {
@@ -80,4 +79,3 @@ export {
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 export default connectToFirebase;
-**/

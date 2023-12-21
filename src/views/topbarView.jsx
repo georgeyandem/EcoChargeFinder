@@ -2,23 +2,29 @@
 //import {sortIngredients} from "/src/utilities.js";
 //import {menuPrice, sortDishes, dishType} from "/src/utilities.js";
 import "/src/style.css";
-function TopbarView(props) {
-  function aboutACB() {
-    window.location.hash = "#/about";
-  }
-  function homeACB() {
-    window.location.hash = "#/";
-  }
-  function buttonClickACB() {
-    console.log("Search button works!");
-  }
 
+// Create a reactive function for isLoggedIn
+// Function to check if the user is logged in based on localStorage
+
+function TopbarView(props) {
   // for the mobile
   function mobileACB() {
     const navbar = document.getElementById("navbar-solid-bg");
     navbar.classList.toggle("hidden"); // Toggle the 'hidden' class on click
   }
 
+  function isUserLoggedIn() {
+    props.userinfo();
+    return localStorage.getItem("isLoggedIn") === "true";
+  }
+
+  function logoutACB() {
+    props.logoutUsingEmail();
+  }
+  // Store the current URL before redirecting to the login page
+  function loginACB() {
+    sessionStorage.setItem("lastVisitedPage", window.location.href);
+  }
   return (
     <div>
       <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -77,14 +83,7 @@ function TopbarView(props) {
                   Search for EcoCharger
                 </a>
               </li>
-              <li>
-                <a
-                  href="#/login"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Login
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#/about"
@@ -92,6 +91,32 @@ function TopbarView(props) {
                 >
                   About us
                 </a>
+              </li>
+              <li>
+                {/* Conditional rendering based on the authentication status */}
+                {isUserLoggedIn() ? (
+                  <div class="flex items">
+                    <a
+                      onClick={logoutACB}
+                      class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    >
+                      Logout as {props.username}
+                    </a>
+                    <img
+                      class="ml-4 w-8 h-8 rounded-full"
+                      src={props.image || "/user.png"}
+                      alt="user photo"
+                    />
+                  </div>
+                ) : (
+                  <a
+                    onClick={loginACB}
+                    href="#/login" // Link for login
+                    class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Login
+                  </a>
+                )}
               </li>
             </ul>
           </div>

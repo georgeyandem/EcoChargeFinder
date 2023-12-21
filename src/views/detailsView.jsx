@@ -1,4 +1,9 @@
 //import "/src/style.css";
 
-function DetailsView(props) {}
-export default DetailsView;
+export default function FavoriteButtonView(props) {
+  function handleButtonClick() {
+    props.favoritebutton();
+  }
+
+  return <button onClick={handleButtonClick}>Add to Favorites</button>;
+}

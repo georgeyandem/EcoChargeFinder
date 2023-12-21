@@ -1,5 +1,10 @@
 import AboutView from "../views/aboutView";
-
-export default function About(props){
-    return <AboutView/>
+import TopbarView from "./topBarPresenter.jsx";
+export default function About(props) {
+  return (
+    <div>
+      <TopbarView model={props.model} />
+      <AboutView />
+    </div>
+  );
 }

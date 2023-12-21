@@ -12,33 +12,62 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 
+import { getDatabase } from "firebase/database";
+
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+
 const app = initializeApp(config);
 const auth = getAuth(app);
-
+const db = getDatabase(app);
 const provider = new GoogleAuthProvider();
+const dba = getFirestore(app);
+// Function to save user data to Firestore
+async function saveUserDataToFirestore(userId, username, email, photoURL) {
+  const userRef = doc(dba, "users", userId);
+
+  try {
+    await setDoc(userRef, {
+      username: username,
+      email: email,
+      photoURL: photoURL,
+    });
+    console.log("User data saved to Firestore");
+  } catch (error) {
+    console.error("Error saving user data:", error);
+  }
+}
+
+export async function getUserDataFromFirestore() {
+  const userId = await getUserId(); // Get the user ID using getUserId function
+  const userRef = doc(dba, "users", userId);
+  const docSnap = await getDoc(userRef);
+  if (docSnap.exists()) {
+    // Document exists, retrieve its data
+    const userData = docSnap.data();
+    return userData; // Return the user data if needed
+  } else {
+    console.log("No such document!");
+    return null;
+  }
+}
 
 export function loginByGoogle() {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-      alert("Welcome " + user.displayName + " !");
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(errorCode, errorMessage, email, credential);
-    });
+  return new Promise((resolve, reject) => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        saveUserDataToFirestore(
+          user.uid,
+          user.displayName,
+          user.email,
+          user.photoURL
+        );
+        resolve(user); // Resolve the promise with the user data
+      })
+      .catch((error) => {
+        reject(error); // Reject the promise with the error
+      });
+  });
 }
 export function login(email, password) {
   signInWithEmailAndPassword(auth, email, password)
@@ -49,8 +78,8 @@ export function login(email, password) {
         console.log("Logged in:", user.uid);
         alert("logged on " + user.email);
       } else {
-        console.log("Email not verified. Please verify your email to log in.");
-        alert("Please verify your email to log in.");
+        console.log("Email not verified. Please verify your email");
+        alert("Please verify your email.");
       }
     })
     .catch((error) => {
@@ -80,14 +109,15 @@ export function logout() {
     }
   });
 }
-export function signup(email, password) {
+export function signup(email, password, username) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
+      saveUserDataToFirestore(user.uid, username, email, null);
       sendEmailVerification(user); // send email verification to the user
-      console.log("Signed up: " + user.email);
-      alert("Signed up");
+      console.log("Signed up: " + username + " " + user.uid);
+      alert("Signed up, Please verfiy your account!");
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -124,3 +154,14 @@ onAuthStateChanged(auth, (user) => {
     console.log("No user is signed");
   }
 });
+
+export function getUserId() {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user.uid); // Resolve with the user ID when available
+      }
+      unsubscribe(); // Unsubscribe immediately after obtaining the user ID
+    });
+  });
+}

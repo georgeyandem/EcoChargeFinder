@@ -1,4 +1,3 @@
-
 import "/src/style.css";
 function SearchView(props) {
   return (

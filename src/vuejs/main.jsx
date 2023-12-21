@@ -4,10 +4,12 @@ import "/src/teacherFetch.js";
 
 // (1) ------------ application state (model) -----------
 import model from "/src/EvModel.js";
+import Map from "../components/map.vue";
 
 // uncomment to make the app update when the model changes.
+import { createPinia } from "pinia";
+import { reactive, watchEffect, ref } from "vue";
 
-import { reactive } from "vue";
 const reactiveModel = reactive(model);
 
 // then use reactiveModel instead of model below!
@@ -22,9 +24,14 @@ import { VueRoot, makeRouter } from "./VueRoot.jsx"; // makeRouter 3
 //import connectToFirebase, { readFromFirebase } from "../firebaseModel.js";  // 3 symbol
 const app = createApp(<VueRoot model={reactiveModel} />);
 
+const pinia = createPinia();
 app.use(makeRouter(reactiveModel)); // 3.3 use reactiveModel instead of model below!
-
+app.use(pinia);
 app.mount("#root"); // mounts the app in the page DIV with the id "root"
+
+// Now you can use these coordinates in your application logic
+// For example, pass them to reactiveModel.doSearch()
+
 // to see the DIV, look at vue.html in the developer tools Sources
 // vue.html, with the content <div id="root"></div> is configured in vite.config.js
 
