@@ -113,12 +113,6 @@ button {
   width: 50%; /* Adjust the width as needed */
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align form items to the left */
-}
-
 @media (max-width: 768px) {
   .flex-container {
     flex-direction: column;
@@ -128,5 +122,3 @@ form {
     width: 100%;
   }
 }
-
-
