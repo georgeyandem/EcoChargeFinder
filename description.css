@@ -1,1 +1,134 @@
+/* General styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Sections styling */
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #555;
+}
+
+/* List styling */
+ol, ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ol li,
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Strong text styling */
+strong {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Link styling */
+a {
+  color: #8d1010;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container h2 strong,
+.container h3 strong {
+  color: #bb0d0d; /* Blue color for strong elements within h2 and h3 */
+}
+
+.container p {
+  color: #333; /* Dark text color for paragraphs */
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.container ul,
+.container ol {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.container ul li,
+.container ol li {
+  margin-bottom: 5px;
+}
+
+.container a {
+  color: #8d1010; /* Blue color for links */
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.subtitle {
+    font-size: 1.3em; /* Adjust the size as needed */
+}
+
+.headline {
+    color: rgb(27, 30, 33); /* Blue color, adjust as needed */
+    font-weight: bold;
+    font-size: 1.5em; /* Adjust the size as needed */
+    /* Add more styles as desired */
+}
+
+/* List styling for License section */
+.container section ul.license-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.container section ul.license-list li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #333; /* Dark text color for list items */
+}
+  
+.container section ul.license-list li:before {
+    content: '\2022'; /* Unicode character for a bullet point */
+    color: #8d1010; /* Blue color for bullet points */
+    font-size: 1.5em; /* Adjust the size of the bullet point as needed */
+    display: inline-block;
+    width: 1em; /* Adjust the spacing between bullet point and text */
+    margin-right: 5px; /* Adjust the margin as needed */
+}
+
+.bold{
+    font-weight: bold; /* Add this line to make the text bold */
+    /* You can adjust the font-weight value or add other styles as needed */
+  }
+
+/*.list {
+    list-style-type: none;
+    padding: 0;
+  }
+.list li {
+    margin-bottom: 10px; /* Adjust as needed }*/
