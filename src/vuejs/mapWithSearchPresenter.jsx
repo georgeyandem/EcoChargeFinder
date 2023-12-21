@@ -11,16 +11,7 @@ export default function Summary(props) {
     } else if (state.error) {
       return "" + props.model.searchResultsPromiseState.error;
     } else if (state.data) {
-      function searchResultACB(evt) {
-        props.model.setCurrentDish(evt.id);
-      }
-
-      return (
-        <SearchResultView
-          searchResults={state.data}
-          onClickDish={searchResultACB}
-        />
-      );
+      return <SearchResultView searchResults={state.data} />;
     } else {
       return "no data";
     }

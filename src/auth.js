@@ -31,7 +31,7 @@ async function saveUserDataToFirestore(userId, username, email, photoURL) {
       email: email,
       photoURL: photoURL,
     });
-    console.log("User data saved to Firestore");
+    //console.log("User data saved to Firestore");
   } catch (error) {
     console.error("Error saving user data:", error);
   }
@@ -128,16 +128,10 @@ export function signup(email, password, username) {
 }
 
 export function password_reset(email) {
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      console.log("Password reset email sent!", user.uid);
-      alert("Password reseted");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Error can't reset your password", errorCode, errorMessage);
-    });
+  sendPasswordResetEmail(auth, email).then(() => {
+    console.log("Password reset email has been sent!");
+    alert("Password reset email has been sent!");
+  });
 }
 
 // Check email verification status on sign-in

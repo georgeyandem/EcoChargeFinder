@@ -10,6 +10,7 @@ import Details from "./detailsPresenter.jsx";
 //import DescriptionView from "/src/views/descriptionView.jsx";
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
+import ResetPass from "./resetPasswordPresenter.jsx";
 
 export function makeRouter(model) {
   return createRouter({
@@ -38,6 +39,10 @@ export function makeRouter(model) {
       {
         path: "/signup",
         component: <Signup model={model} />,
+      },
+      {
+        path: "/reset",
+        component: <ResetPass model={model} />,
       },
       /*{
         path: "/contact",

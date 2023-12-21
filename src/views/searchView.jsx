@@ -6,6 +6,7 @@ function SearchView(props) {
         class="pl-9 pr-4 py-3 text-sm focus:outline-blue w-full shado-md rounded-md"
         placeholder="Search"
         onChange={textInputChange}
+        onkeydown={handleKeyPress}
       />
 
       <div
@@ -19,11 +20,16 @@ function SearchView(props) {
   );
 
   function buttonClickACB() {
-    console.log("Search button works!");
     props.onButtonClick();
   }
   function textInputChange(evt) {
     props.onTextChange(evt.target.value);
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter" || event.keyCode === 13) {
+      props.onButtonClick();
+    }
   }
 }
 export default SearchView;

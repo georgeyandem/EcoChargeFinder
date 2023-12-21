@@ -1,5 +1,5 @@
 import resolvePromise from "./resolvePromise.js";
-import searchMap from "../src/evSource.js";
+import { searchMap, reverseGeoCode } from "../src/evSource.js";
 
 export default {
   password: "",
@@ -8,7 +8,13 @@ export default {
   username: "",
   imgUrl: "",
   searchParams: {},
+  geocode: "",
   searchResultsPromiseState: {},
+  convertPromiseState: {},
+
+  setgeocode(code) {
+    this.geocode = code;
+  },
 
   setUsername(newUser) {
     this.username = newUser;
@@ -32,5 +38,10 @@ export default {
   doSearch(searchParams) {
     const searchPromise = searchMap(searchParams.location);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
+  },
+
+  doConvert(geocode) {
+    const convertgeo = reverseGeoCode(geocode);
+    resolvePromise(convertgeo, this.convertPromiseState);
   },
 };

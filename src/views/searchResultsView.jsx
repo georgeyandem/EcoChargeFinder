@@ -16,6 +16,7 @@ function SearchResultView(props) {
     function clickHandler(evt) {
       console.log("wor"); // props.onClickDish(results)
       //window.location.hash = "#/details";
+      console.log(results);
     }
 
     return (
