@@ -26,7 +26,7 @@ function ContactView() {
       </div>
 
       {/* Container 2: Business Hours */}
-      <div class="text-center mb-4 ml-2 flex-shrink-0"> {/* Adjusted margin-bottom */}
+      <div class="text-center mb-20 ml-8 flex-shrink-0 p-20"> {/* Increased left margin */}
         <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Business Hours</h3>
         <p>Monday to Friday: 9:00 AM to 5:00 PM</p>
         <p>Saturday and Sunday: Closed</p>
