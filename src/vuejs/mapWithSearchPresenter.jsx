@@ -34,6 +34,11 @@ export default function Summary(props) {
     props.model.doSearch(props.model.searchParams);
   }
 
+  function moredetails() {
+    props.model.doDetails();
+    console.log(props.model.locationDetailsPromiseState.state);
+  }
+
   return (
     <div>
       <TopbarView model={props.model} />
@@ -46,7 +51,7 @@ export default function Summary(props) {
         />
         {logicfunction(props.model.searchResultsPromiseState)}
       </div>
-      <Map model={props.model} />
+      <Map handleMoreDetailsACB={moredetails} />
     </div>
   );
 }

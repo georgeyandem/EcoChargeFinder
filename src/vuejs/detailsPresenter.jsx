@@ -40,15 +40,7 @@ export default function Summary(props) {
       throw error;
     }
   }
-  /*
-  function fetchFavorites(userId) {
-    const favoritesStore = useFavoritesStore();
-    favoritesStore
-      .fetchUserFavorites(userId)
-      .then((favorites) => console.log("User Favorites:", favorites))
-      .catch((error) => console.error("Error:", error));
-  }*/
-
+  console.log(props.model.locationDetailsPromiseState.state);
   return (
     <div>
       <TopbarView model={props.model} />
