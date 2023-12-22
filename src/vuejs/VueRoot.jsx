@@ -6,11 +6,13 @@ import Login from "./loginPresenter.jsx";
 import Signup from "./signupPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
 import Details from "./detailsPresenter.jsx";
+import BottombarView from "../views/bottombarView.jsx";
 //import ContactView from "/src/views/contactView.jsx";
 //import DescriptionView from "/src/views/descriptionView.jsx";
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import ResetPass from "./resetPasswordPresenter.jsx";
+
 
 export function makeRouter(model) {
   return createRouter({
@@ -44,6 +46,7 @@ export function makeRouter(model) {
         path: "/reset",
         component: <ResetPass model={model} />,
       },
+      
       /*{
         path: "/contact",
         component: ContactView,
@@ -71,6 +74,7 @@ export function VueRoot(props) {
         <div class="sidebar"></div>
         <div class="main_content">
           <RouterView />
+          <BottombarView />
         </div>
       </div>
     );
@@ -82,6 +86,7 @@ export function VueRoot(props) {
         </div>
         <div class="main_content">
           <RouterView />
+          <BottombarView />
         </div>
       </div>
     );
