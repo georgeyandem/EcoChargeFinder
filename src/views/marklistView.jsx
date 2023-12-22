@@ -3,33 +3,35 @@ import "/src/style.css";
 function Marklist(props) {
   // check if there is result if not no need for the scroll
   return (
-    <div>
-      <h1>Favorite Stations</h1>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="p-4">
-                Remove
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Station name
-              </th>
-              <th scope="col" class="px-6 py-3">
-                street
-              </th>
-              <th scope="col" class="px-6 py-3">
-                City
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Country
-              </th>
-            </tr>
-          </thead>
-          <tbody>{props.favoriteData.map(mapACB)}</tbody>
-        </table>
-      </div>
+    <div className="bg-gray-50 min-h-screen flex flex-col items-center pt-8">
+    <h1 className="text-3xl font-semibold text-gray-700 mb-4">Favorite Stations</h1>
+    <div className="w-full max-w-4xl p-4 bg-white rounded-lg shadow overflow-hidden">
+      <table className="w-full text-sm text-gray-700">
+        <thead className="text-xs text-white bg-gray-800 uppercase">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              Remove
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Station name
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Street
+            </th>
+            <th scope="col" className="px-6 py-3">
+              City
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Country
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.favoriteData.map((result, index) => mapACB(result, index))}
+        </tbody>
+      </table>
     </div>
+  </div>
   );
 
   function mapACB(results) {
@@ -45,17 +47,19 @@ function Marklist(props) {
     }
     return (
       <tr
-        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600"
         onClick={moveToMapACB}
       >
-        <td class="w-4 p-4">
-          <div class="flex items-center">
-            <button class="fa-solid fa-xmark" onclick={removeACB}></button>
-          </div>
+        <td class="px-6 py-4">
+          
+            <button class="text-red-500 hover:text-red-700 focus:outline-none" onclick={removeACB}>
+            <i className="fas fa-trash-alt"></i>
+            </button>
+          
         </td>
         <th
           scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          class="px-6 py-4 font-medium text-gray-900 dark:text-white"
         >
           {results[0]?.address?.amenity
             ? results[0].address.amenity
