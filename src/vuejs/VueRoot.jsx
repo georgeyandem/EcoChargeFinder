@@ -32,14 +32,7 @@ export function makeRouter(model) {
         path: "/search",
         component: <MapWithSearch model={model} />,
       },
-      {
-        path: "/terms",
-        component: TermsOfServiceView,
-      },
-      {
-        path: "/privacy",
-        component: PrivacyPolicyView,
-      },
+
       {
         path: "/details/",
         component: <Details model={model} />,
