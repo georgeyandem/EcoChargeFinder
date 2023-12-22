@@ -1,5 +1,5 @@
 import resolvePromise from "./resolvePromise.js";
-import { searchMap } from "../src/evSource.js";
+import { searchMap, locationDetails } from "../src/evSource.js";
 import { useFavoritesStore } from "../src/stores/counter.js"; // Import the store
 
 export default {
@@ -16,7 +16,12 @@ export default {
   favoriteMarks: [],
   showMarksstate: {},
   favoritelist: null,
+  location: "",
+  locationDetailsPromiseState: {},
 
+  setlocation(location) {
+    this.location = location;
+  },
   setfavoritelist(result) {
     this.favoritelist = [...result];
   },
@@ -47,6 +52,11 @@ export default {
   doSearch(searchParams) {
     const searchPromise = searchMap(searchParams.location);
     resolvePromise(searchPromise, this.searchResultsPromiseState);
+  },
+
+  doDetails() {
+    const details = locationDetails(location);
+    resolvePromise(details, this.locationDetailsPromiseState);
   },
 
   showFavoriteMarks() {

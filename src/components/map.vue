@@ -208,6 +208,7 @@ export default {
         const popupContent = `<p>${coords.address.amenity}</p><a href="#/details" id="popupLink">More Details</a>`;
         resultMarker.value.bindPopup(popupContent).openPopup();
         // set map view to current location
+        // Assuming you have a function to handle the click event
         map.setView([coords.lat, coords.lon], 12);
       }
     }
