@@ -36,6 +36,12 @@ async function saveUserDataToFirestore(userId, username, email, photoURL) {
     console.error("Error saving user data:", error);
   }
 }
+// Function to save the chosen result for the user
+export function saveChosenResult(userId, chosenResult) {
+  db.ref(`model/${userId}`).set({
+    chosenResult: chosenResult,
+  });
+}
 
 export async function getUserDataFromFirestore() {
   const userId = await getUserId(); // Get the user ID using getUserId function
@@ -159,3 +165,4 @@ export function getUserId() {
     });
   });
 }
+export { db };

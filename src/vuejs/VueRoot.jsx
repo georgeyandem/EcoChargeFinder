@@ -52,6 +52,7 @@ export function makeRouter(model) {
         path: "/description",
         component: DescriptionView,
       },*/
+
       {
         path: "/:catchAll(.*)",
         name: "NotFound",

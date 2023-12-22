@@ -8,7 +8,7 @@ import Map from "../components/map.vue";
 
 // uncomment to make the app update when the model changes.
 import { createPinia } from "pinia";
-import { reactive, watchEffect, ref } from "vue";
+import { reactive, watchEffect, ref, watch } from "vue";
 
 const reactiveModel = reactive(model);
 
@@ -25,8 +25,10 @@ import { VueRoot, makeRouter } from "./VueRoot.jsx"; // makeRouter 3
 const app = createApp(<VueRoot model={reactiveModel} />);
 
 const pinia = createPinia();
+
 app.use(makeRouter(reactiveModel)); // 3.3 use reactiveModel instead of model below!
 app.use(pinia);
+
 app.mount("#root"); // mounts the app in the page DIV with the id "root"
 
 // Now you can use these coordinates in your application logic

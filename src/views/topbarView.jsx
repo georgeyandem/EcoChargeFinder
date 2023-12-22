@@ -25,9 +25,13 @@ function TopbarView(props) {
   function loginACB() {
     sessionStorage.setItem("lastVisitedPage", window.location.href);
   }
+
+  function markACB() {
+    window.location.hash = "#/savedmarks";
+  }
   return (
     <div>
-      <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <nav class=" bg-gray-800 border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img
@@ -69,7 +73,7 @@ function TopbarView(props) {
               <li>
                 <a
                   href="#"
-                  class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent  md:dark:bg-transparent"
+                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   aria-current="page"
                 >
                   Home
@@ -85,12 +89,14 @@ function TopbarView(props) {
               </li>
 
               <li>
-                <a
-                  href="#/about"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  About us
-                </a>
+                {isUserLoggedIn() && ( // Use "&&" for conditional rendering
+                  <a
+                    onClick={markACB}
+                    class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Favorite Station
+                  </a>
+                )}
               </li>
               <li>
                 {/* Conditional rendering based on the authentication status */}
@@ -106,6 +112,7 @@ function TopbarView(props) {
                       class="ml-4 w-8 h-8 rounded-full"
                       src={props.image || "/user.png"}
                       alt="user photo"
+                      id="icon"
                     />
                   </div>
                 ) : (

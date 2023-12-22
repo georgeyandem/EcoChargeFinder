@@ -2,6 +2,7 @@ import SearchView from "../views/searchView.jsx";
 import SearchResultView from "../views/searchResultsView.jsx";
 import Map from "../components/map.vue";
 import TopbarView from "./topBarPresenter.jsx";
+import Marklist from "../views/marklistView.jsx";
 export default function Summary(props) {
   function logicfunction(state) {
     if (!state.promise) {
@@ -30,7 +31,7 @@ export default function Summary(props) {
   return (
     <div>
       <TopbarView model={props.model} />
-      <div class="w-full md:w-auto absolute md:top-[120px] md:left-[70px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent sm:top-[120px]">
+      <div class="w-full md:w-auto absolute md:top-[120px] md:left-[120px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent sm:top-[120px]">
         <SearchView
           //searchResults={searchACB}
           onTextChange={SearchTextACB}
@@ -39,7 +40,7 @@ export default function Summary(props) {
         />
         {logicfunction(props.model.searchResultsPromiseState)}
       </div>
-      <Map />
+      <Map model={props.model} />
     </div>
   );
 }

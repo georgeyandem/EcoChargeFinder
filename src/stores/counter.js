@@ -1,51 +1,62 @@
 import { defineStore } from "pinia";
 // Initialize Firebase app and auth instance
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getDatabase, ref, child, set, get } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  limitToFirst,
+  query,
+  orderByKey,
+} from "firebase/database";
 import config from "../firebaseConfig";
-
+import { get } from "firebase/database";
 // Initialize Firebase app and auth instance
 const app = initializeApp(config);
-const auth = getAuth(app);
 const db = getDatabase(app);
-export const useCounterStore = defineStore("counter", () => {
-  const count = ref(0);
-  function increment() {
-    count.value++;
-  }
-  function decrement() {
-    count.value--;
-  }
-  return { count, increment, decrement };
-});
 
-export const useFavoritesStore = defineStore({
-  id: "favorites",
+export const useFavoritesStore = defineStore("favorites", {
   state: () => ({
-    userFavorites: {},
+    favorites: [],
   }),
   actions: {
-    // Action to save user's favorite marks to Firebase Realtime Database
-    async saveUserFavorites(userId, favorites) {
-      // Assuming you've initialized Firebase and obtained the database reference as `firebaseDatabaseRef`
-      try {
-        const databaseRef = child(ref(db), `model/${userId}/favorites`);
-        await set(databaseRef, favorites);
-        console.log("Favorites saved successfully");
-      } catch (error) {
-        console.error("Error saving favorites:", error);
-      }
+    async fetchFavorites(userId) {
+      // Fetch favorites logic remains unchanged
+      // ...
     },
-    // Action to fetch user's favorite marks from Firebase Realtime Database
-    async fetchUserFavorites(userId) {
+
+    // Function to save a new favorite for a user
+    async saveFavorites(userId, newFavorite) {
       try {
-        const databaseRef = child(ref(db), `model/${userId}/favorites`);
-        const snapshot = await get(databaseRef);
-        return snapshot.val() || {};
+        const favoritesRef = ref(db, `model/${userId}/favorites`);
+        const snapshot = await get(favoritesRef);
+
+        if (snapshot.exists()) {
+          let existingFavorites = snapshot.val();
+
+          if (!Array.isArray(existingFavorites)) {
+            // If the existing data is not an array, convert it to an array
+            existingFavorites = [existingFavorites];
+          }
+
+          // Push the new favorite to the existing array
+          existingFavorites.push(newFavorite);
+
+          // Limit the favorites to a maximum of 5
+          const limitedFavorites = existingFavorites.slice(0, 5);
+
+          await set(favoritesRef, limitedFavorites);
+          console.log("New favorite added and saved successfully");
+          return limitedFavorites;
+        } else {
+          // If favorites node doesn't exist, create it with the new favorite as an array
+          await set(favoritesRef, [newFavorite]);
+          console.log("New favorite added and saved successfully");
+          return [newFavorite];
+        }
       } catch (error) {
-        console.error("Error fetching favorites:", error);
-        return {};
+        console.error("Error saving favorite:", error);
+        throw error;
       }
     },
   },

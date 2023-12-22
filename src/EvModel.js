@@ -1,5 +1,6 @@
 import resolvePromise from "./resolvePromise.js";
 import { searchMap, reverseGeoCode } from "../src/evSource.js";
+import { useFavoritesStore } from "../src/stores/counter.js"; // Import the store
 
 export default {
   password: "",
@@ -11,9 +12,16 @@ export default {
   geocode: "",
   searchResultsPromiseState: {},
   convertPromiseState: {},
+  selectedResult: {},
+  favoriteMarks: [],
+  showMarksstate: {},
 
   setgeocode(code) {
     this.geocode = code;
+  },
+
+  setselectedResult(result) {
+    this.selectedResult.result = result;
   },
 
   setUsername(newUser) {
@@ -43,5 +51,20 @@ export default {
   doConvert(geocode) {
     const convertgeo = reverseGeoCode(geocode);
     resolvePromise(convertgeo, this.convertPromiseState);
+  },
+
+  showFavoriteMarks() {
+    const favoritesStore = useFavoritesStore(); // Access the store instance
+
+    favoritesStore
+      .fetchFavorites()
+      .then(() => {
+        this.favoriteMarks = favoritesStore.favorites;
+        resolvePromise(this.favoriteMarks, this.showMarksstate);
+      })
+      .catch((error) => {
+        console.error("Error fetching favorites:", error);
+        // Handle the error
+      });
   },
 };

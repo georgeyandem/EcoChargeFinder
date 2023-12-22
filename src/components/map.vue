@@ -5,26 +5,49 @@
       v-if="geoError"
       :geoErrorMsg="geoErrorMsg"
     />
+    <MapFeatures
+      @getLocation="getLocation"
+      :coords="coords"
+      :fetchCoords="fetchCoords"
+    />
     <div id="map" class="h-full z-[1]"></div>
   </div>
 </template>
 
 <script>
 import leaflet from "leaflet";
-import { onMounted, onBeforeUnmount, ref, onUnmounted } from "vue";
+import EventBus from "../Eventbus.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  ref,
+  onUnmounted,
+  onUpdated,
+  watch,
+} from "vue";
 import mapMarkerRed from "../assets/map-marker-red.svg";
+import mapMakerBlue from "../assets/map-marker-blue.svg";
 import ErrorModal from "./ErrorModal.vue";
+import MapFeatures from "./mapFeatures.vue";
+
 export default {
   name: "Map",
-  components: { ErrorModal },
-  setup() {
+  components: { ErrorModal, MapFeatures },
+  props: ["prompt"],
+  setup(props) {
     let map;
     const coords = ref(null);
     const fetchCoords = ref(null);
     const marker = ref(null);
     const geoError = ref(null);
     const geoErrorMsg = ref(null);
+
     let locationWatcher; // Store the location watcher to clear it later
+    // Listen for 'resultClicked' event from SearchResultView
+    EventBus.on("resultClicked", (results) => {
+      // Call the plotResult function with the clicked results
+      plotResult(results);
+    });
     function mapACB() {
       // init map
       map = leaflet.map("map").setView([59.3293, 18.0686], 10);
@@ -38,7 +61,12 @@ export default {
         })
         .addTo(map);
 
-      getLocation();
+      setTimeout(() => {
+        getLocation();
+      }, 100); // Delay the geolocation call by 100 milliseconds
+      // Run the plotResult function when the selectedResult prop changes
+
+      // Listen for zoomend event on the map
     }
 
     onMounted(mapACB);
@@ -58,18 +86,22 @@ export default {
     // Method to update coordinates
 
     function getLocation() {
+      if (coords.value) {
+        coords.value = null;
+        sessionStorage.removeItem("coords");
+        map.removeLayer(marker.value);
+        return;
+      }
       //check if we have the coords
       if (sessionStorage.getItem("coords")) {
         coords.value = JSON.parse(sessionStorage.getItem("coords"));
         plotlocation(coords.value);
         return;
       }
+
+      // else get coords from geolocation API
       fetchCoords.value = true;
-      // Watch for location and handle callbacks accordingly
-      locationWatcher = navigator.geolocation.watchPosition(
-        setCoords,
-        getError
-      );
+      navigator.geolocation.getCurrentPosition(setCoords, getError);
     }
 
     function setCoords(pos) {
@@ -112,22 +144,58 @@ export default {
     }
 
     function plotlocation(coords) {
-      const marker = leaflet.icon({
+      const CustomMarker = leaflet.icon({
         iconUrl: mapMarkerRed,
         iconSize: [30, 30],
       });
       //create new marker with the coords and icon
       marker.value = leaflet
         .marker([coords.lat, coords.lng], {
-          icon: marker,
+          icon: CustomMarker,
         })
         .addTo(map);
-
+      // Adding a popup to the marker
+      marker.value.bindPopup("Current Location").openPopup();
+      // Adding a popup to the marker
       // set map view to current location
       map.setView([coords.lat, coords.lng], 12);
     }
+    const resultMarker = ref(null);
+    function plotResult(coords) {
+      // check if resultmarker has value
 
-    return { coords, marker, closeError, geoError, geoErrorMsg };
+      if (resultMarker.value) {
+        map.removeLayer(resultMarker.value);
+      }
+
+      const CustomMarker = leaflet.icon({
+        iconUrl: mapMakerBlue,
+        iconSize: [30, 30],
+      });
+      //create new marker with the coords and icon
+      resultMarker.value = leaflet
+        .marker([coords.lat, coords.lon], {
+          icon: CustomMarker,
+        })
+        .addTo(map);
+
+      const popupContent = `<p>${coords.address.amenity}</p><a href="#/details" id="popupLink">More Details</a>`;
+      resultMarker.value.bindPopup(popupContent).openPopup();
+
+      // set map view to current location
+      map.setView([coords.lat, coords.lon], 12);
+    }
+
+    return {
+      coords,
+      fetchCoords,
+      marker,
+      closeError,
+      geoError,
+      geoErrorMsg,
+      getLocation,
+      plotResult,
+    };
   },
 };
 </script>

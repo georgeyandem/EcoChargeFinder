@@ -1,12 +1,13 @@
 import "/src/style.css";
 import EventBus from "../Eventbus.js";
-function SearchResultView(props) {
+function Marklist(props) {
   // check if there is result if not no need for the scroll
   const showScrollbar = props.searchResults
     ? "overflow-y-scroll"
     : "overflow-y-hidden";
   return (
     <div class="absolute mt-14 w-full left-0 ">
+      <i class="fa-duotone fa-bookmark"></i>
       <div class={`h-[200px] bg-white rounded-md ${showScrollbar}`}>
         {props.searchResults.map(mapACB)}
       </div>
@@ -15,6 +16,7 @@ function SearchResultView(props) {
 
   function mapACB(results) {
     function clickHandler(evt) {
+      props.selectedresultACB(results);
       // Serialize and save to localStorage
       localStorage.setItem("savedData", JSON.stringify(results));
       // props.onClickDish(results)
@@ -33,4 +35,4 @@ function SearchResultView(props) {
   }
 }
 
-export default SearchResultView;
+export default Marklist;

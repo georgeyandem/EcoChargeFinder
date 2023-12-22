@@ -3,7 +3,7 @@ function SearchView(props) {
   return (
     <div class="relative flex-1 md:min-w-[350px]" id="search">
       <input
-        class="pl-9 pr-4 py-3 text-sm focus:outline-blue w-full shado-md rounded-md"
+        class="pl-9 pr-4 py-3 text-sm focus:outline-blue w-full shadow-md rounded-md"
         placeholder="Search"
         onChange={textInputChange}
         onkeydown={handleKeyPress}
