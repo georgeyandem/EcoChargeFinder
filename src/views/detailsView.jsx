@@ -26,8 +26,14 @@ export default function DetailsView(props) {
               </h1>
 
               <p class="leading-relaxed">
-                {props.stationInfo.address.country}
-                {props.stationInfo.address.postcode}
+                Country: &nbsp;{props.stationInfo.address.country}
+                <br />
+                City: &nbsp; {props.stationInfo.address.city}
+                Street: &nbsp;{props.stationInfo.address.postcode}&nbsp;
+                {props.stationInfo.address.road}&nbsp;
+                <br />
+                Place rank: &nbsp;
+                {props.stationInfo.place_rank}
               </p>
 
               <div class="flex">
