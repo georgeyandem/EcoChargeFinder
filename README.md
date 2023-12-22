@@ -51,11 +51,29 @@ This component is responsible for displaying an error message when the user deni
 - Features:
   - Navigation buttons.
 
-#### `BottenbarView`
+#### `BottenbarView.jsx`
 - A copyright statement indicating the current year and ownership of the EcoChargeFinder website.
 - Links to important pages:
   - Terms of Service
-  - Privacy Policy  
+  - Privacy Policy 
+
+#### `ContactView.jsx`
+  - This component displays contact information, business hours, and a "Get in Touch" section. It provides a structured layout for presenting essential details.
+
+#### `DetailsView.jsx`
+  - This component renders detailed information about a station, showcasing an image, station name, reviews, color, size options, pricing, and an "Add to Favorites" button. Ideal for presenting in-depth content within your React application.
+
+#### `MarklistView.jsx`
+  - This component is designed to display a list of favorite stations. It provides a clean and organized layout with the ability to remove stations from the favorites list.
+
+#### `ResetPassword.jsx`
+  - This component provides a user interface for resetting passwords. It includes a form with an email input, a checkbox for accepting terms and conditions, and a button to initiate the password reset process.
+
+#### `PrivacyPolicyView.jsx`
+  - This component presents the privacy policy for EcoChargeFinder, outlining the collection, usage, and protection of user information. This component is designed to provide users with transparency about how their data is handled when using the application.
+
+#### `TermsOfService.jsx` 
+  - This component presents the terms of service for EcoChargeFinder, outlining the rules and regulations for using the platform. Users are required to comply with these terms when accessing or using the services provided by EcoChargeFinder.
 
 ### Presenters:
 
@@ -83,6 +101,31 @@ This component is responsible for displaying an error message when the user deni
 - Description: Presenter for the navbar, Search Results and the map.
   - Features:No additional logic, simply renders the topBarView.
 
+#### `BottombarPresenter.jsx`
+-The BottombarPresenter orchestrates navigation actions for the bottom bar of the application. It provides functions to navigate to the terms of service and privacy policy views by updating the window location hash. This presenter is responsible for handling user interactions and directing them to the respective views.
+
+#### `ContactPresenter.jsx`
+-The ContactPresenter is a presenter component that renders the ContactView. It serves as a bridge between the view and any data or functionality required. In this case, it simply renders the ContactView, which displays contact information and details.
+
+#### `DescreiptionPresenter.jsx`
+- The descriptionPresenter component serves as an introduction to the EcoChargeFinder application, providing users with essential information about its purpose and functionality. 
+
+#### `DetailsPresenter.jsx`
+- This component serves as a presenter to display a summary of details, incorporating user interactions related to saving favorites and managing user data. It leverages the TopbarView and DetailsView components to provide a cohesive user interface.
+
+#### `MarklistPresenter.jsx`
+- The Summary component is a presenter that integrates the TopbarView and Marklist components to provide a user interface for managing favorite locations. It includes functions for navigating to location details and removing markers from the user's favorites.
+
+#### `PrivacyPolicyPresenter.jsx`
+- The PrivacyPolicyView component in EcoChargeFinder offers users a visually appealing and well-organized presentation of the platform's privacy policy. This view is integral for informing users about how their data is collected, utilized, and safeguarded within the application.
+
+#### `TermsOfServicePresenter.jsx`
+- The TermsOfServiceView component is dedicated to presenting EcoChargeFinder's terms of service in a clear and structured manner. Users can refer to this view to understand the rules and regulations governing their use of the platform. It serves as a comprehensive guide to user responsibilities and conditions for utilizing EcoChargeFinder services.
+
+#### `ResetPassword.jsx`
+- This component serves as a presenter for the password reset functionality, integrating the ResetPassView component and authentication services. It enables users to initiate the password reset process, providing a seamless experience for updating their account credentials.
+
+
 ### Model
 
 #### `EvModel.js`
@@ -94,13 +137,6 @@ This component is responsible for displaying an error message when the user deni
 #### `resolvePromise.js`
 - Description: Utility function to handle promises and update promise state.
 
-## What Still Needs to Be Done
-While the current implementation provides a functional foundation, there are several areas that may benefit from further development:
-* TopbarView: The top bar component is currently a placeholder. Depending on the project requirements, additional navigation or information features could be implemented here. 
-* DetailsPresenter and DetailsView: If the application involves more detailed information about charging stations, these components may need enhancements to display and handle additional data. 
-* Styles and UI Improvements: Enhance the overall user experience by adding styles and UI improvements to make the application more visually appealing and user-friendly. 
-* Testing: Implement unit tests and integration tests to ensure the reliability and robustness of the application. 
-* Documentation: Provide comprehensive documentation for developers, including setup instructions, code structure, and any additional features. 
 
 ## Usage
 

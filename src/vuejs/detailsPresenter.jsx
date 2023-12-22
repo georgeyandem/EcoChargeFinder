@@ -9,7 +9,6 @@ export default function Summary(props) {
       : [];
     getUserId()
       .then((userId) => {
-        console.log("User ID:", userId);
         return saveFavorites(userId, userFavorites);
       })
       .then(() => {
@@ -32,7 +31,6 @@ export default function Summary(props) {
       const favoritesArray = [favorites]; // Convert single item into an array
 
       await favoritesStore.saveFavorites(userId, favoritesArray);
-      console.log("Favorites saved successfully", favoritesArray);
       return favoritesArray; // Return the saved favorites if needed
     } catch (error) {
       console.error("Error saving favorites:", error);
@@ -40,7 +38,7 @@ export default function Summary(props) {
       throw error;
     }
   }
-  console.log(props.model.locationDetailsPromiseState.state);
+
   return (
     <div>
       <TopbarView model={props.model} />
