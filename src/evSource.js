@@ -1,9 +1,4 @@
-import {
-  BASE_URL,
-  API_KEY,
-  BASE_URL_Convert,
-  API_KEY_Convert,
-} from "./apiConfig.js";
+import { BASE_URL, API_KEY } from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
