@@ -7,8 +7,9 @@ import model from "/src/EvModel.js";
 import Map from "../components/map.vue";
 
 // uncomment to make the app update when the model changes.
-import { createPinia } from "pinia";
+import { createPinia } from 'pinia';
 import { reactive, watchEffect, ref, watch } from "vue";
+
 
 const reactiveModel = reactive(model);
 
