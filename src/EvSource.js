@@ -1,4 +1,9 @@
-import { BASE_URL, API_KEY } from "./apiConfig.js";
+import {
+  BASE_URL,
+  API_KEY,
+  API_KEY_TOMTOM,
+  BASE_URL_TOMTOM,
+} from "./apiConfig.js";
 
 function responseACB(response) {
   if (!response.ok) {
@@ -26,7 +31,7 @@ export function searchMap(city) {
     },
   }).then(responseACB);
 }
-/*
+
 const apiKey = "tpUgTDLO9rlEkee4cAlXjzMl5WPA75PU";
 const chargingStationAddress =
   "Mer Häljarp station, Häljenäsvägen, Häljarps mölla, Sverige"; // Name of the charging station
@@ -47,7 +52,24 @@ fetch(searchEndpoint)
   .catch((error) => {
     console.error("Error fetching charging station data:", error);
   });
-*/
+
+export function locationDetails(chargingStationAddress) {
+  const url =
+    BASE_URL_TOMTOM +
+    chargingStationAddress +
+    `.json?key=${apiKey}&countrySet=SE&limit=1`;
+  // Make a GET request to retrieve charging station details
+  fetch(url)
+    .then(responseACB)
+    .then((data) => {
+      // Handle the response data here
+      console.log(data);
+      // Extract and display relevant details about the charging station
+    })
+    .catch((error) => {
+      console.error("Error fetching charging station data:", error);
+    });
+}
 
 /*
 // Function to fetch a random image of charging stations
