@@ -51,6 +51,12 @@ This component is responsible for displaying an error message when the user deni
 - Features:
   - Navigation buttons.
 
+#### `BottenbarView`
+- A copyright statement indicating the current year and ownership of the EcoChargeFinder website.
+- Links to important pages:
+  - Terms of Service
+  - Privacy Policy  
+
 ### Presenters:
 
 #### `AboutPresenter.jsx`
