@@ -17,7 +17,7 @@ function ContactView() {
         {/* Text section without Container 1 */}
         <div class="text-center mb-4 ml-2 flex-shrink-0"> {/* Adjusted ml for left margin */}
         <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Contact Details</h3>
-        <p>Företagsnamn: EcoChargeFinder AB</p>
+        <p>Company name: EcoChargeFinder AB</p>
         <p>Address: Kistagången 16, 164 40 Kista, Stockholm</p>
         <p>Email: ecochargefinder@outlook.com</p>
         <p>Phone: +46 8-100-20-40
