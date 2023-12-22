@@ -1,50 +1,36 @@
-//import "/src/style.css";
-
 export default function DetailsView(props) {
   function handleButtonClick() {
     props.favoritebutton();
   }
 
   return (
-    <div>
-      <section class="text-gray-700 body-font overflow-hidden bg-white">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="lg:w-4/5 mx-auto flex flex-wrap">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10 px-4">
+      <section className="container mx-auto bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl">
+        <div className="flex flex-wrap md:flex-nowrap">
+          <div className="md:w-1/2 w-full">
             <img
-              alt="ecommerce"
-              class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+              alt="Station"
+              className="w-full h-full object-cover object-center"
               src="/detailImage.jpg"
             />
-            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 class="text-sm title-font text-gray-500 tracking-widest">
-                STATION NAME
-              </h2>
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-                {props.stationInfo?.address?.amenity
-                  ? props.stationInfo.address.amenity
-                  : "Not available"}
-              </h1>
-
-              <p class="leading-relaxed">
-                Country: &nbsp;{props.stationInfo.address.country}
-                <br />
-                City: &nbsp; {props.stationInfo.address.city}
-                Street: &nbsp;{props.stationInfo.address.postcode}&nbsp;
-                {props.stationInfo.address.road}&nbsp;
-                <br />
-                Place rank: &nbsp;
-                {props.stationInfo.place_rank}
-              </p>
-
-              <div class="flex">
-                <button
-                  onClick={handleButtonClick}
-                  class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                >
-                  Add to Favorites
-                </button>
-              </div>
-            </div>
+          </div>
+          <div className="md:w-1/2 w-full p-8">
+            <h2 className="text-xl font-semibold text-gray-800 mb-1">Station Name</h2>
+            <h1 className="text-3xl font-bold text-blue-600 mb-4">
+              {props.stationInfo?.address?.amenity || "Station Details"}
+            </h1>
+            <p className="mb-4 text-gray-600">
+              <strong>Country:</strong> {props.stationInfo.address.country}<br />
+              <strong>City:</strong> {props.stationInfo.address.city}<br />
+              <strong>Street:</strong> {props.stationInfo.address.postcode} {props.stationInfo.address.road}<br />
+              <strong>Place Rank:</strong> {props.stationInfo.place_rank}
+            </p>
+            <button
+              onClick={handleButtonClick}
+              className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out"
+            >
+              Add to Favorites
+            </button>
           </div>
         </div>
       </section>
