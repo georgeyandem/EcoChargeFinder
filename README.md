@@ -117,7 +117,7 @@ This component is responsible for displaying an error message when the user deni
 - The Summary component is a presenter that integrates the TopbarView and Marklist components to provide a user interface for managing favorite locations. It includes functions for navigating to location details and removing markers from the user's favorites.
 
 #### `PrivacyPolicyPresenter.jsx`
-The PrivacyPolicyView component in EcoChargeFinder offers users a visually appealing and well-organized presentation of the platform's privacy policy. This view is integral for informing users about how their data is collected, utilized, and safeguarded within the application.
+- The PrivacyPolicyView component in EcoChargeFinder offers users a visually appealing and well-organized presentation of the platform's privacy policy. This view is integral for informing users about how their data is collected, utilized, and safeguarded within the application.
 
 #### `TermsOfServicePresenter.jsx`
 - The TermsOfServiceView component is dedicated to presenting EcoChargeFinder's terms of service in a clear and structured manner. Users can refer to this view to understand the rules and regulations governing their use of the platform. It serves as a comprehensive guide to user responsibilities and conditions for utilizing EcoChargeFinder services.
