@@ -1,0 +1,23 @@
+User Review
+
+The feedback from users has provided valuable insights into optimizing the EcoChargeFinder platform for a more seamless and engaging experience. Here's a brief overview of the key recommendations:
+
+Search Experience Enhancement:
+1.	The user mentioned and gave the advice to make the search experience more flexible by receiving the search results after pressing the “enter” button on the keyboard instead of manually clicking the search icon on the search bar.
+ 
+Favorite Stations Feature:
+2.	The user also advised to be able to add the stations to the favorite list, so that the stations can go straight to the saved places in the favorite list instead of searching it manually, as the favorite places are added to its favorite account and saved until its removed. 
+
+Detailed Station Information:
+3.	Specifically before adding the station to the favorite list, the user also suggested to be able to see the details about its station in order to distinguish the multiple stations from each other and any additional information. 
+
+Interactive Map Feature:
+4.	User experienced interest in an interactive map feature for seamless location of charging stations, where the “stationed” icon moves interactively as the user presses different location from the search bar. 
+
+Visual Appeal and Engagement:
+5.	Incorporating visually appealing elements and graphics was recommended to enhance overall engagement, which was created thanks by using tailwind css-styles, consistently making sure the test passes the experience of being user interactive. 
+Simplified Search Functionality:
+6.	In the beginning before the needed improvement, the search functionality was deemed overwhelming. Users recommended simplifying it and introducting additional filter options for a smoother experience, where search bar
+
+Mobile Responsiveness:
+7.	We also received a feedback on making the application mobile responsive so that the user could use it on the go. 
