@@ -88,7 +88,7 @@ export default {
       setTimeout(() => {
         // Emit an event when the map is about to unmount
 
-        clearAllMarkers();
+        //clearAllMarkers();
         EventBus.off("resultClicked");
         localStorage.removeItem("locationClicked");
         localStorage.removeItem("savedData");
