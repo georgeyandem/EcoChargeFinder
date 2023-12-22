@@ -85,19 +85,25 @@ export default {
 
     onMounted(mapACB);
     onBeforeUnmount(() => {
-      // Emit an event when the map is about to unmount
-      EventBus.off("resultClicked");
-      if (map) {
-        map.off(); // Remove any event listeners from the map
-        map.remove(); // Remove the map instance
-      }
-      if (locationWatcher) {
-        navigator.geolocation.clearWatch(locationWatcher);
-      }
-      // Reset or clear reactive properties and variables
-      fetchCoords.value = null;
-      geoError.value = null;
-      geoErrorMsg.value = null;
+      setTimeout(() => {
+        // Emit an event when the map is about to unmount
+
+        clearAllMarkers();
+        EventBus.off("resultClicked");
+        localStorage.removeItem("locationClicked");
+        localStorage.removeItem("savedData");
+        if (map) {
+          map.off(); // Remove any event listeners from the map
+          map.remove(); // Remove the map instance
+        }
+        if (locationWatcher) {
+          navigator.geolocation.clearWatch(locationWatcher);
+        }
+        // Reset or clear reactive properties and variables
+        fetchCoords.value = null;
+        geoError.value = null;
+        geoErrorMsg.value = null;
+      }, 100);
     });
     // Method to update coordinates
 
@@ -191,18 +197,19 @@ export default {
         iconUrl: mapMakerBlue,
         iconSize: [30, 30],
       });
+      if (coords.lat && coords.lon) {
+        //create new marker with the coords and icon
+        resultMarker.value = leaflet
+          .marker([coords.lat, coords.lon], {
+            icon: CustomMarker,
+          })
+          .addTo(map);
 
-      //create new marker with the coords and icon
-      resultMarker.value = leaflet
-        .marker([coords.lat, coords.lon], {
-          icon: CustomMarker,
-        })
-        .addTo(map);
-
-      const popupContent = `<p>${coords.address.amenity}</p><a href="#/details" id="popupLink">More Details</a>`;
-      resultMarker.value.bindPopup(popupContent).openPopup();
-      // set map view to current location
-      map.setView([coords.lat, coords.lon], 12);
+        const popupContent = `<p>${coords.address.amenity}</p><a href="#/details" id="popupLink">More Details</a>`;
+        resultMarker.value.bindPopup(popupContent).openPopup();
+        // set map view to current location
+        map.setView([coords.lat, coords.lon], 12);
+      }
     }
 
     return {
