@@ -1,6 +1,5 @@
-import "/src/style.css";
-
 function BottombarView() {
+    const router = useRouter();
     return (
       <footer>
         <div>
@@ -11,7 +10,27 @@ function BottombarView() {
         </div>
       </footer>
     );
+  
+  const navigateToTerms = () => {
+    router.push("/terms");
+  };
+
+  const navigateToPrivacyPolicy = () => {
+    router.push("/privacy");
+  };
+
+  return (
+    <footer>
+      <div>
+        &copy; {new Date().getFullYear()} EcoChargeFinder. All rights reserved.
+      </div>
+      <div>
+        <button onClick={navigateToTerms}>Terms of Service</button> |{" "}
+        <button onClick={navigateToPrivacyPolicy}>Privacy Policy</button>
+      </div>
+    </footer>
+  );
+
   }
   
   export default BottombarView;
-  
