@@ -4,25 +4,30 @@ function AboutView(props) {
     window.location.hash = "#/";
   }
   function handleContactClick() {
-    window.location.hash = "#/contact"; // Update the hash based on your route
+    window.location.hash = "#/contact"; 
   }
   function handleDescriptionClick() {
-    window.location.hash = "#/contact"; // Update the hash based on your route
+    window.location.hash = "#/contact"; 
   }
   return (
-    <div>
-      <button onClick={handleDescriptionClick}>
-        Description about how the app works
-      </button>
-      <br />
-      <button onClick={handleContactClick}>
-        Contact us
-      </button>
-      <br />
-      <br />
+    <section>
+      <ul>
+        <li>
+          <button onClick={() => handleNavigation("description")}>
+            Description about how the app works
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleNavigation("contact")}>
+            Contact us
+          </button>
+        </li>
+      </ul>
+
       <img src="/EcoChargeFinder_icon.png" alt="App Icon" />
+
       <button onClick={backToHomeACB}>Back to Home Page</button>
-    </div>
+    </section>
   );
 }
 
