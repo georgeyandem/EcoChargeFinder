@@ -57,7 +57,9 @@ function Marklist(props) {
           scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {results[0].address.amenity}
+          {results[0]?.address?.amenity
+            ? results[0].address.amenity
+            : "Not available"}
         </th>
         <td class="px-6 py-4">
           {results[0].address.postcode + " " + results[0].address.road}
