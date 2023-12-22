@@ -6,7 +6,7 @@ function SearchResultView(props) {
     ? "overflow-y-scroll"
     : "overflow-y-hidden";
   return (
-    <div class="absolute mt-14 w-full left-0 ">
+    <div class="absolute mt-14 w-full left-0 " id="searchResult">
       <div class={`h-[200px] bg-white rounded-md ${showScrollbar}`}>
         {props.searchResults.map(mapACB)}
       </div>
