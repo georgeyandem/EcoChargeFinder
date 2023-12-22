@@ -3,12 +3,7 @@ function AboutView(props) {
   function backToHomeACB() {
     window.location.hash = "#/";
   }
-  function handleContactClick() {
-    window.location.hash = "#/contact"; 
-  }
-  function handleDescriptionClick() {
-    window.location.hash = "#/contact"; 
-  }
+
   return (
     <section>
       <ul>

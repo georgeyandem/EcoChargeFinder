@@ -81,7 +81,6 @@ export function login(email, password) {
       const user = userCredential.user;
       if (user.emailVerified) {
         // Signed in
-        console.log("Logged in:", user.uid);
         alert("logged on " + user.email);
       } else {
         console.log("Email not verified. Please verify your email");
