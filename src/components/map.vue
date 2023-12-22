@@ -91,7 +91,7 @@ export default {
         //clearAllMarkers();
         EventBus.off("resultClicked");
         localStorage.removeItem("locationClicked");
-        localStorage.removeItem("savedData");
+
         if (map) {
           map.off(); // Remove any event listeners from the map
           map.remove(); // Remove the map instance
