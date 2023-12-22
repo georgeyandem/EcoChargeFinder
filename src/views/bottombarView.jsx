@@ -1,5 +1,3 @@
-import "/src/style.css";
-
 function BottombarView() {
   return (
     <footer>
