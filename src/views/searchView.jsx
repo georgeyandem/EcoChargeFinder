@@ -28,7 +28,10 @@ function SearchView(props) {
 
   function handleKeyPress(event) {
     if (event.key === "Enter" || event.keyCode === 13) {
-      props.onButtonClick();
+      // Wait a bit using setTimeout to ensure the DOM updates or the data is ready
+      setTimeout(() => {
+        props.onButtonClick();
+      }, 100); // Adjust the delay time as needed
     }
   }
 }

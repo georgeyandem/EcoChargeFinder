@@ -44,10 +44,7 @@ export default {
 
     let locationWatcher; // Store the location watcher to clear it later
     // Listen for 'resultClicked' event from SearchResultView
-    EventBus.on("resultClicked", (results) => {
-      // Call the plotResult function with the clicked results
-      plotResult(results);
-    });
+
     function mapACB() {
       // init map
       map = leaflet.map("map").setView([59.3293, 18.0686], 10);
@@ -65,12 +62,31 @@ export default {
         getLocation();
       }, 100); // Delay the geolocation call by 100 milliseconds
       // Run the plotResult function when the selectedResult prop changes
+      EventBus.on("resultClicked", (results) => {
+        // Call the plotResult function with the clicked results
+        if (results && results.lat && results.lon) {
+          plotResult(results);
+        } else {
+          console.error("Invalid or missing data in result clicked event.");
+          // Handle the case when results are not as expected
+        }
+      });
 
+      setTimeout(() => {
+        let favoriteData = localStorage.getItem("locationClicked")
+          ? JSON.parse(localStorage.getItem("locationClicked"))
+          : {};
+        if (favoriteData) {
+          plotResult(favoriteData);
+        }
+      }, 100);
       // Listen for zoomend event on the map
     }
 
     onMounted(mapACB);
     onBeforeUnmount(() => {
+      // Emit an event when the map is about to unmount
+      EventBus.off("resultClicked");
       if (map) {
         map.off(); // Remove any event listeners from the map
         map.remove(); // Remove the map instance
@@ -125,7 +141,7 @@ export default {
 
     function getError(err) {
       // if there is an error
-      console.log(err);
+      //console.log(err);
       fetchCoords.value = null;
       if (err.code === 1) {
         // User denied Geolocation
@@ -161,17 +177,21 @@ export default {
       map.setView([coords.lat, coords.lng], 12);
     }
     const resultMarker = ref(null);
+    function clearAllMarkers() {
+      map.removeLayer(resultMarker.value); // Remove each marker from the map
+    }
     function plotResult(coords) {
       // check if resultmarker has value
 
       if (resultMarker.value) {
         map.removeLayer(resultMarker.value);
+        resultMarker.value = null; // Reset the marker reference
       }
-
       const CustomMarker = leaflet.icon({
         iconUrl: mapMakerBlue,
         iconSize: [30, 30],
       });
+
       //create new marker with the coords and icon
       resultMarker.value = leaflet
         .marker([coords.lat, coords.lon], {
@@ -181,7 +201,6 @@ export default {
 
       const popupContent = `<p>${coords.address.amenity}</p><a href="#/details" id="popupLink">More Details</a>`;
       resultMarker.value.bindPopup(popupContent).openPopup();
-
       // set map view to current location
       map.setView([coords.lat, coords.lon], 12);
     }

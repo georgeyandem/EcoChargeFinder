@@ -15,9 +15,10 @@ export default {
   selectedResult: {},
   favoriteMarks: [],
   showMarksstate: {},
+  favoritelist: null,
 
-  setgeocode(code) {
-    this.geocode = code;
+  setfavoritelist(result) {
+    this.favoritelist = [...result];
   },
 
   setselectedResult(result) {

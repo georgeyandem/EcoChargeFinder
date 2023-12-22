@@ -7,7 +7,6 @@ export default function Summary(props) {
     const userFavorites = localStorage.getItem("savedData")
       ? JSON.parse(localStorage.getItem("savedData"))
       : [];
-    console.log(userFavorites);
     getUserId()
       .then((userId) => {
         console.log("User ID:", userId);
@@ -37,6 +36,7 @@ export default function Summary(props) {
       return favoritesArray; // Return the saved favorites if needed
     } catch (error) {
       console.error("Error saving favorites:", error);
+      alert("Please login to use the favorite stations feature");
       throw error;
     }
   }

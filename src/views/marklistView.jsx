@@ -1,36 +1,70 @@
 import "/src/style.css";
-import EventBus from "../Eventbus.js";
+
 function Marklist(props) {
   // check if there is result if not no need for the scroll
-  const showScrollbar = props.searchResults
-    ? "overflow-y-scroll"
-    : "overflow-y-hidden";
   return (
-    <div class="absolute mt-14 w-full left-0 ">
-      <i class="fa-duotone fa-bookmark"></i>
-      <div class={`h-[200px] bg-white rounded-md ${showScrollbar}`}>
-        {props.searchResults.map(mapACB)}
+    <div>
+      <h1>Favorite Stations</h1>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="p-4">
+                Remove
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Station name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                street
+              </th>
+              <th scope="col" class="px-6 py-3">
+                City
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Country
+              </th>
+            </tr>
+          </thead>
+          <tbody>{props.favoriteData.map(mapACB)}</tbody>
+        </table>
       </div>
     </div>
   );
 
   function mapACB(results) {
-    function clickHandler(evt) {
-      props.selectedresultACB(results);
-      // Serialize and save to localStorage
-      localStorage.setItem("savedData", JSON.stringify(results));
-      // props.onClickDish(results)
-      //window.location.hash = "#/details";
-      EventBus.emit("resultClicked", results);
+    function moveToMapACB(evt) {
+      //if there is no amenity get street name with postalcode
+      props.tomapACB(results[0]);
     }
-
+    function removeACB(event) {
+      // Prevent the click event from bubbling up to the parent elements
+      event.stopPropagation();
+      console.log(results);
+      props.removemark(results);
+    }
     return (
-      <div class="px-4 py-2 flex gap-x-2 cursor-pointer hover:bg-slate-600 hover:text-white">
-        <div key={results.id} onClick={clickHandler}>
-          <i class="fa-solid fa-location-dot"></i>
-          <p class="text-xs">{results.display_name}</p>
-        </div>
-      </div>
+      <tr
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        onClick={moveToMapACB}
+      >
+        <td class="w-4 p-4">
+          <div class="flex items-center">
+            <button class="fa-solid fa-xmark" onclick={removeACB}></button>
+          </div>
+        </td>
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {results[0].address.amenity}
+        </th>
+        <td class="px-6 py-4">
+          {results[0].address.postcode + " " + results[0].address.road}
+        </td>
+        <td class="px-6 py-4">{results[0].address.city}</td>
+        <td class="px-6 py-4">{results[0].address.city}</td>
+      </tr>
     );
   }
 }

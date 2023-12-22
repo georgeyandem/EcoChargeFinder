@@ -11,6 +11,7 @@ import Details from "./detailsPresenter.jsx";
 import { createRouter, RouterView, createWebHashHistory } from "vue-router";
 import NotFound from "../components/NotFound.vue";
 import ResetPass from "./resetPasswordPresenter.jsx";
+import Marklist from "./marklistPresenter.jsx";
 
 export function makeRouter(model) {
   return createRouter({
@@ -43,6 +44,10 @@ export function makeRouter(model) {
       {
         path: "/reset",
         component: <ResetPass model={model} />,
+      },
+      {
+        path: "/savedmarks",
+        component: <Marklist model={model} />,
       },
       /*{
         path: "/contact",

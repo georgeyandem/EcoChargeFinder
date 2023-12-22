@@ -1,5 +1,5 @@
 import "/src/style.css";
-import EventBus from "../Eventbus.js";
+
 function SearchResultView(props) {
   // check if there is result if not no need for the scroll
   const showScrollbar = props.searchResults
@@ -15,11 +15,7 @@ function SearchResultView(props) {
 
   function mapACB(results) {
     function clickHandler(evt) {
-      // Serialize and save to localStorage
-      localStorage.setItem("savedData", JSON.stringify(results));
-      // props.onClickDish(results)
-      //window.location.hash = "#/details";
-      EventBus.emit("resultClicked", results);
+      props.clickACB(results);
     }
 
     return (

@@ -21,8 +21,23 @@ export const useFavoritesStore = defineStore("favorites", {
   }),
   actions: {
     async fetchFavorites(userId) {
-      // Fetch favorites logic remains unchanged
-      // ...
+      try {
+        const favoritesRef = ref(db, `model/${userId}/favorites`);
+        const snapshot = await get(favoritesRef);
+
+        if (snapshot.exists()) {
+          const favoritesData = snapshot.val();
+          // Assuming favoritesData is an array of favorites
+          console.log("Favorites fetched successfully:", favoritesData);
+          return favoritesData;
+        } else {
+          console.log("No favorites found for this user");
+          return [];
+        }
+      } catch (error) {
+        console.error("Error fetching favorites:", error);
+        throw error;
+      }
     },
 
     // Function to save a new favorite for a user
@@ -56,6 +71,49 @@ export const useFavoritesStore = defineStore("favorites", {
         }
       } catch (error) {
         console.error("Error saving favorite:", error);
+        throw error;
+      }
+    },
+    async removeFromStore(userId, arrayToRemove) {
+      try {
+        const favoritesRef = ref(db, `model/${userId}/favorites`);
+        const snapshot = await get(favoritesRef);
+
+        if (snapshot.exists()) {
+          let arrayOfArrays = snapshot.val();
+
+          if (!Array.isArray(arrayOfArrays)) {
+            arrayOfArrays = [];
+          }
+
+          let foundIndex = -1;
+
+          arrayOfArrays.some((array, index) => {
+            // Compare the content of the arrays
+            if (JSON.stringify(array) === JSON.stringify(arrayToRemove)) {
+              foundIndex = index;
+              return true; // Stop iteration
+            }
+            return false;
+          });
+
+          if (foundIndex !== -1) {
+            // Remove the array with content equality found at the specific index
+            arrayOfArrays.splice(foundIndex, 1);
+
+            await set(favoritesRef, arrayOfArrays);
+            console.log("Array removed successfully");
+            return arrayOfArrays;
+          } else {
+            console.log("Array not found with the given content");
+            return arrayOfArrays;
+          }
+        } else {
+          console.log("No data found for this user");
+          return [];
+        }
+      } catch (error) {
+        console.error("Error removing array:", error);
         throw error;
       }
     },

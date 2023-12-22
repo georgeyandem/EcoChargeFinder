@@ -2,30 +2,36 @@ import SearchView from "../views/searchView.jsx";
 import SearchResultView from "../views/searchResultsView.jsx";
 import Map from "../components/map.vue";
 import TopbarView from "./topBarPresenter.jsx";
-import Marklist from "../views/marklistView.jsx";
+import EventBus from "../Eventbus.js";
 export default function Summary(props) {
   function logicfunction(state) {
     if (!state.promise) {
-      return;
+      return null; // Render nothing if no promise is present
     } else if (!state.data && !state.error) {
-      return <img src="https://brfenergi.se/iprog/loading.gif"></img>;
+      return <img src="https://brfenergi.se/iprog/loading.gif" alt="Loading" />; // Render loading GIF
     } else if (state.error) {
-      return "" + props.model.searchResultsPromiseState.error;
+      return <p>Error: {state.error}</p>; // Render the error message
     } else if (state.data) {
-      return <SearchResultView searchResults={state.data} />;
+      function clickhandler(results) {
+        // Serialize and save to localStorage
+        localStorage.setItem("savedData", JSON.stringify(results));
+        EventBus.emit("resultClicked", results);
+      }
+      return (
+        <SearchResultView searchResults={state.data} clickACB={clickhandler} />
+      ); // Render search results
     } else {
-      return "no data";
+      return "No data"; // Fallback if none of the conditions match
     }
   }
 
-  function SearchTextACB(evt) {
+  function searchTextACB(evt) {
     //console.log(evt);
     props.model.setSearch(evt);
   }
 
   function searchACB(evt) {
     props.model.doSearch(props.model.searchParams);
-    props.model.searchParams;
   }
 
   return (
@@ -34,7 +40,7 @@ export default function Summary(props) {
       <div class="w-full md:w-auto absolute md:top-[120px] md:left-[120px] z-[2] flex gap-4 px-6 py-8 md:px-0 md:py-0 bg-transparent sm:top-[120px]">
         <SearchView
           //searchResults={searchACB}
-          onTextChange={SearchTextACB}
+          onTextChange={searchTextACB}
           onButtonClick={searchACB}
           //onSelectChange={SearchTextACB}
         />
