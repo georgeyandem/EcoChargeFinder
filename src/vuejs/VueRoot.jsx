@@ -3,8 +3,8 @@
 import Home from "./homePresenter.jsx";
 import About from "./aboutPresenter.jsx";
 import Login from "./loginPresenter.jsx";
-import TermsOfServiceView from "/path/to/views/TermsOfServiceView.jsx";
-import PrivacyPolicyView from "/path/to/views/PrivacyPolicyView.jsx";
+import TermsOfService from "./termsOfServicePresenter.jsx";
+import PrivacyPolicy from "./privacyPolicyPresenter.jsx";
 import Signup from "./signupPresenter.jsx";
 import MapWithSearch from "./mapWithSearchPresenter.jsx";
 import Details from "./detailsPresenter.jsx";
@@ -51,6 +51,14 @@ export function makeRouter(model) {
       {
         path: "/savedmarks",
         component: <Marklist model={model} />,
+      },
+      {
+        path: "/terms",
+        component: <TermsOfService />,
+      },
+      {
+        path: "/privacy",
+        component: <PrivacyPolicy />,
       },
       /*{
         path: "/contact",
