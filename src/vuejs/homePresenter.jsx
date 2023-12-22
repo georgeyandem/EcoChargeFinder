@@ -1,5 +1,8 @@
+import ContactView from "/src/views/contactView";  // Importing the ContactView component
 import HomeView from "../views/homeView.jsx";
 import TopbarView from "./topBarPresenter.jsx";
+
+
 export default function Home(props) {
   return (
     <div>
@@ -8,6 +11,8 @@ export default function Home(props) {
         number={props.model.numberOfCharger}
         info={props.model.chargers}
       />
+      {/* Add the ContactView component */}
+      <ContactView />
     </div>
   );
 }
